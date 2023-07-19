@@ -49,7 +49,11 @@
                                 <td>{{ students.name }}</td>
                                 <td>{{students.email}}</td>
                                 <td>{{students.phone_number}}</td>
-                                <td>------</td>
+                                <td>
+                                    <button type="button" @click="editStudent(students.id)"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Edit
+                                    </button>
+                                </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -57,6 +61,45 @@
                 </div>
             </div>
         </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="text" v-model="edit_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Phone Number</label>
+                            <input type="number" v-model="edit_phone_number" class="form-control" id="exampleInputPassword1" placeholder="Phone Number">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" v-model="edit_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <input type="text" v-model="edit_id" name="id">
+                        <br>
+                        <button type="submit" @click.prevent="save_edited(edit_id)" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
     </div>
 </template>
 
@@ -71,7 +114,11 @@ import axios from 'axios';
                 name:"",
                 email:"",
                 phone_number:"", 
-                students_data: {}
+                students_data: {}, 
+                edit_name:"",
+                edit_email:"",
+                edit_phone_number:"",
+                edit_id:""
             };
         },
             methods:{
@@ -90,6 +137,8 @@ import axios from 'axios';
                         this.getStudents();
                     });
                 },
+
+
                 getStudents(){
                     axios.get('list_students')
                     .then(response=>{
@@ -99,9 +148,33 @@ import axios from 'axios';
                         console.error(error);
                     })
                 },
-                editStudent(){
-                    axios.post('edit_students/id').then(response=>{
-                        console.log(response)
+
+                editStudent(id){
+                    // alert(id);
+                    axios.get("edit_students/"+id).then(response=>{
+                        console.log(response.data)
+                        this.edit_name=response.data.name,
+                        this.edit_email=response.data.email,
+                        this.edit_phone_number=response.data.phone_number,
+                        this.edit_id = response.data.id
+                    }) .catch(error =>{
+                        console.error(error);
+                    })
+                }, 
+                save_edited(edit_id){
+                    axios.post('save_edited/'+edit_id,{
+                        name:this.edit_name,
+                        email:this.edit_email,
+                        phone_number:this.edit_phone_number   
+                    })
+                    .then(response=>{
+                        // console.log(edit_id)
+                        console.log(response);
+                        this.getStudents();
+
+                    })
+                    .catch(error=>{
+                        console.log(error);
                     })
                 }
               
@@ -111,17 +184,8 @@ import axios from 'axios';
         mounted() {
             console.log('Component mounted.')
             this.getStudents();
-            // getStudents(){
-            // axios.get('list_students')
-            // .then(response=>{
-            //     this.students_data = response.data   //save the attained data in an array named students_data
-            //     // console.log(response.data);
-            //     // console.log(this.students_data);
-            // })
-            // .catch(error =>{
-            //     console.error(error);
-            // })
-        // };
     }
+    
     }
+    
 </script>

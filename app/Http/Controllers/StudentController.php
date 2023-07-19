@@ -34,4 +34,14 @@ class StudentController extends Controller
         $edit = Student::FindOrfail($id)->first();
         return ($edit);
     }
+    public function save_edited($id){
+        // dd('success');
+        // $id = request()->edit_id;
+        $edit_saved = Student::FindOrfail($id)->first();
+        $edit_saved->name = request()->name;
+        $edit_saved->email = request()->email;
+        $edit_saved->phone_number = request()->phone_number;
+        $edit_saved->update();
+        return ('data edited');
+    }
 }
