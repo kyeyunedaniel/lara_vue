@@ -29,4 +29,9 @@ class StudentController extends Controller
         return $students;
 
     }
+
+    public function edit_students($id){
+        $edit = Student::FindOrfail($id)->first();
+        return ($edit);
+    }
 }

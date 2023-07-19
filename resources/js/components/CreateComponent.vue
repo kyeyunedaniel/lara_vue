@@ -44,8 +44,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="students in students_data" :key="students.id">
-                                <td scope="row">1</td>
+                                <tr v-for="(students, index) in students_data" :key="students.id">
+                                <td scope="row">{{index+1}}</td>
                                 <td>{{ students.name }}</td>
                                 <td>{{students.email}}</td>
                                 <td>{{students.phone_number}}</td>
@@ -82,23 +82,46 @@ import axios from 'axios';
                         email:this.email,
                         phone_number:this.phone_number
                     })
-                    .then(response => console.log(response))
+                    .then(response => {
+                        console.log(response)
+                        this.name="";
+                        this.email="";
+                        this.phone_number="";
+                        this.getStudents();
+                    });
+                },
+                getStudents(){
+                    axios.get('list_students')
+                    .then(response=>{
+                        this.students_data = response.data 
+                    })
+                    .catch(error =>{
+                        console.error(error);
+                    })
+                },
+                editStudent(){
+                    axios.post('edit_students/id').then(response=>{
+                        console.log(response)
+                    })
                 }
               
 
             }
         ,
         mounted() {
-            console.log('Component mounted.'),
-            axios.get('list_students')
-            .then(response=>{
-                this.students_data = response.data   //save the attained data in an array named students_data
-                // console.log(response.data);
-                // console.log(this.students_data);
-            })
-            .catch(error =>{
-                console.error(error);
-            })
-        }
+            console.log('Component mounted.')
+            this.getStudents();
+            // getStudents(){
+            // axios.get('list_students')
+            // .then(response=>{
+            //     this.students_data = response.data   //save the attained data in an array named students_data
+            //     // console.log(response.data);
+            //     // console.log(this.students_data);
+            // })
+            // .catch(error =>{
+            //     console.error(error);
+            // })
+        // };
+    }
     }
 </script>
