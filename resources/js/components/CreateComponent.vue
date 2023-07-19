@@ -35,6 +35,8 @@
 
 
 <script>
+import axios from 'axios';
+
     export default {
         data(){
             return{
@@ -45,7 +47,12 @@
             methods:{
                 saveStudent(){
                     // alert('student saved ');
-
+                    axios.post('save_student',{
+                        name:this.name,
+                        email:this.email,
+                        phone_number:this.phone_number
+                    })
+                    .then(response => console.log(response))
                 }
 
             }
