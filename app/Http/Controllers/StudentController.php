@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Models\Students;
 use PhpParser\Node\Stmt\Return_;
 
 class StudentController extends Controller
@@ -19,6 +18,15 @@ class StudentController extends Controller
         $student->save();
         
         return ('student saved');
+
+    }
+    public function list_students(){
+        $students = Student::All();
+        // $data = array(
+        //     'students'=>$students
+        // );
+        // return response()->json($data);
+        return $students;
 
     }
 }

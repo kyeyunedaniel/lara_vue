@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">Create New Student</div>
 
@@ -28,6 +28,34 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">View Students</div>
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">PhoneNumber </th>
+                                <th scope="col">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="students in students_data" :key="students.id">
+                                <td scope="row">1</td>
+                                <td>{{ students.name }}</td>
+                                <td>{{students.email}}</td>
+                                <td>{{students.phone_number}}</td>
+                                <td>------</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -42,8 +70,10 @@ import axios from 'axios';
             return{
                 name:"",
                 email:"",
-                phone_number:""
-            }},
+                phone_number:"", 
+                students_data: {}
+            };
+        },
             methods:{
                 saveStudent(){
                     // alert('student saved ');
@@ -54,11 +84,21 @@ import axios from 'axios';
                     })
                     .then(response => console.log(response))
                 }
+              
 
             }
         ,
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.'),
+            axios.get('list_students')
+            .then(response=>{
+                this.students_data = response.data   //save the attained data in an array named students_data
+                // console.log(response.data);
+                // console.log(this.students_data);
+            })
+            .catch(error =>{
+                console.error(error);
+            })
         }
     }
 </script>

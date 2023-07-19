@@ -17,9 +17,14 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import CreateComponent from './components/CreateComponent.vue';
+import { Bootstrap4Pagination } from 'laravel-vue-pagination';
+import { Bootstrap5Pagination } from 'laravel-vue-pagination';
+import { TailwindPagination } from 'laravel-vue-pagination';
 
 app.component('example-component', ExampleComponent);
 app.component('create-component',CreateComponent );
+// app.component('pagination',);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
