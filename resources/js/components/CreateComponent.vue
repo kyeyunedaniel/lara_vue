@@ -1,4 +1,25 @@
 <template>
+    <div class="text-center" v-if="isLoading" >
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    </div>
+    <div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="message_new_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body alert alert-success">
+                ...
+            </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -100,7 +121,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </div>
@@ -124,6 +144,12 @@
             </div>
         </div>
         </div>
+
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MessageModal">
+        Launch demo modal
+        </button>
+
             
         
     </div>
@@ -151,6 +177,7 @@ import axios from 'axios';
             methods:{
                 saveStudent(){
                     // alert('student saved ');
+                    this.loading = true;
                     axios.post('save_student',{
                         name:this.name,
                         email:this.email,
@@ -161,6 +188,8 @@ import axios from 'axios';
                         this.name="";
                         this.email="";
                         this.phone_number="";
+                        $(MessageModal).modal('show');
+                        
                         this.getStudents();
                     });
                 },
