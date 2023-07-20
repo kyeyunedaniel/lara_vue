@@ -44,4 +44,10 @@ class StudentController extends Controller
         $edit_saved->update();
         return ('data edited');
     }
+
+    public function delete_student($id){
+        $student = Student::findorfail($id);
+        $student->delete();
+        return ('user has been deleted');
+    }
 }

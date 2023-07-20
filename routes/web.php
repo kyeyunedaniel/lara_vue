@@ -25,3 +25,4 @@ Route::post('save_student','App\Http\Controllers\StudentController@save_student'
 Route::get('list_students','App\Http\Controllers\StudentController@list_students')->name('list_student.home');
 Route::get('edit_students/{id}','App\Http\Controllers\StudentController@edit_students')->name('edit_student.home');
 Route::post('save_edited/{id}','App\Http\Controllers\StudentController@save_edited')->name('save_edited_student.home');
+Route::post('delete_student/{id}','App\Http\Controllers\StudentController@delete_student')->name('delete_student.home');
