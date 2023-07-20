@@ -31,13 +31,13 @@ class StudentController extends Controller
     }
 
     public function edit_students($id){
-        $edit = Student::FindOrfail($id)->first();
+        $edit = Student::FindOrfail($id);
         return ($edit);
     }
     public function save_edited($id){
         // dd('success');
         // $id = request()->edit_id;
-        $edit_saved = Student::FindOrfail($id)->first();
+        $edit_saved = Student::FindOrfail($id);
         $edit_saved->name = request()->name;
         $edit_saved->email = request()->email;
         $edit_saved->phone_number = request()->phone_number;

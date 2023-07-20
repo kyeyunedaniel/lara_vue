@@ -41,6 +41,8 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">PhoneNumber </th>
                                 <th scope="col">Action </th>
+                                <!-- <th scope="col">id </th> -->
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +56,7 @@
                                     Edit
                                     </button>
                                 </td>
+                                <!-- <td>{{students.id}} </td> -->
                                 </tr>
                             </tbody>
                         </table>
@@ -87,9 +90,9 @@
                             <input type="email" v-model="edit_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                        <input type="text" v-model="edit_id" name="id">
+                        <!-- <input type="text" v-model="edit_id" name="id"> -->
                         <br>
-                        <button type="submit" @click.prevent="save_edited(edit_id)" class="btn btn-primary">Submit</button>
+                        <button type="submit" @click.prevent="save_edited(edit_id)" data-dismiss="modal" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -149,9 +152,9 @@ import axios from 'axios';
                     })
                 },
 
-                editStudent(id){
-                    // alert(id);
-                    axios.get("edit_students/"+id).then(response=>{
+                editStudent(id_student){
+                    // alert(id_student);
+                    axios.get("edit_students/"+id_student).then(response=>{
                         console.log(response.data)
                         this.edit_name=response.data.name,
                         this.edit_email=response.data.email,
@@ -160,7 +163,8 @@ import axios from 'axios';
                     }) .catch(error =>{
                         console.error(error);
                     })
-                }, 
+                },
+
                 save_edited(edit_id){
                     axios.post('save_edited/'+edit_id,{
                         name:this.edit_name,
@@ -171,6 +175,7 @@ import axios from 'axios';
                         // console.log(edit_id)
                         console.log(response);
                         this.getStudents();
+
 
                     })
                     .catch(error=>{
