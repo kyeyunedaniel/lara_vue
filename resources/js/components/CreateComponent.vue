@@ -171,13 +171,14 @@ import axios from 'axios';
                 edit_email:"",
                 edit_phone_number:"",
                 edit_id:"",
-                id_delete:""
+                id_delete:"",
+                isLoading:false
             };
         },
             methods:{
                 saveStudent(){
                     // alert('student saved ');
-                    this.loading = true;
+                    this.isLoading = true;
                     axios.post('save_student',{
                         name:this.name,
                         email:this.email,
@@ -188,9 +189,16 @@ import axios from 'axios';
                         this.name="";
                         this.email="";
                         this.phone_number="";
-                        $(MessageModal).modal('show');
                         
+                        setTimeout(() => {
+                        this.isLoading = false;
+                        // Perform data handling after loading is complete
                         this.getStudents();
+                        $(MessageModal).modal('show');
+                        }, 2000); // Replace 2000 with the actual time it takes to load the data
+                    
+                        // this.getStudents();
+                        // $(MessageModal).modal('show');
                     });
                 },
 
