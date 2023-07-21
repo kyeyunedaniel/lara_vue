@@ -20,6 +20,9 @@
                     {{ __('You are logged in!') }}
                     <create-component/>
                 </div>
+                <div>
+                    <user-component/>
+                </div>
             </div>
         </div>
     </div>

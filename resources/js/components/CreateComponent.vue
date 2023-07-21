@@ -9,13 +9,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body alert alert-success">
-                ...
+                Action has been completed successfully
             </div>
             </div>
         </div>
@@ -30,17 +30,17 @@
                         <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
-                            <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+                            <input type="text" v-model="name" class="form-control" placeholder="Enter Name">
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Phone Number</label>
-                            <input type="number" v-model="phone_number" class="form-control" id="exampleInputPassword1" placeholder="Phone Number">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="number" v-model="phone_number" class="form-control" id="phone_number" placeholder="Phone Number">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                            <input type="email" v-model="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <br>
@@ -101,17 +101,17 @@
                         <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
-                            <input type="text" v-model="edit_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+                            <input type="text" v-model="edit_name" class="form-control" placeholder="Enter Name">
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Phone Number</label>
-                            <input type="number" v-model="edit_phone_number" class="form-control" id="exampleInputPassword1" placeholder="Phone Number">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="number" v-model="edit_phone_number" class="form-control" placeholder="Phone Number">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" v-model="edit_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                            <input type="email" v-model="edit_email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <!-- <input type="text" v-model="edit_id" name="id"> -->
@@ -195,7 +195,7 @@ import axios from 'axios';
                         // Perform data handling after loading is complete
                         this.getStudents();
                         $(MessageModal).modal('show');
-                        }, 2000); // Replace 2000 with the actual time it takes to load the data
+                        }, 100); // Replace 2000 with the actual time it takes to load the data
                     
                         // this.getStudents();
                         // $(MessageModal).modal('show');
