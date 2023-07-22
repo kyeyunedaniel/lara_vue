@@ -27,3 +27,4 @@ Route::get('edit_students/{id}','App\Http\Controllers\StudentController@edit_stu
 Route::post('save_edited/{id}','App\Http\Controllers\StudentController@save_edited')->name('save_edited_student.home');
 Route::post('delete_student/{id}','App\Http\Controllers\StudentController@delete_student')->name('delete_student.home');
 Route::post('save_user','App\Http\Controllers\UserController@save');
+Route::get('bet_api','App\Http\Controllers\UserController@BetApi');

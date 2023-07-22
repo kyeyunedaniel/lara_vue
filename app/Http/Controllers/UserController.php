@@ -16,4 +16,7 @@ class UserController extends Controller
 
         return($user_save->name = request()->name);
     }
+    public function BetApi(){
+        return view('bet_api');
+    }
 }

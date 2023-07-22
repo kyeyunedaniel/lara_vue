@@ -22,7 +22,7 @@
             <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
         </div>
         <br>
-        <button type="submit" v-on:click.prevent="saveUser" class="btn btn-primary">Submit</button>
+        <button type="submit" v-on:click.prevent="saveUser" :disabled="form_validation" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
@@ -38,7 +38,8 @@ data(){
         user_name:"",
         user_email:"",
         password:"",
-        confirm_password:""
+        confirm_password:"",
+        form_validation:false
     }
 },
 methods:{
@@ -61,7 +62,13 @@ methods:{
         else{
             console.log('unable to load')
         }
-    }
+    },
+    // formValidation(){
+    //     // return (!this.user_name.trim() || !this.user_email || !this.password || !this.confirm_password);
+    //     // console.log('function called for true or false')
+    //     return true;
+
+    // }
 },
 
 mounted(){

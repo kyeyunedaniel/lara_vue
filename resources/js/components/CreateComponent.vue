@@ -206,6 +206,7 @@ import axios from 'axios';
                 getStudents(){
                     axios.get('list_students')
                     .then(response=>{
+                        //save the attained data in an object 
                         this.students_data = response.data 
                     })
                     .catch(error =>{
@@ -258,7 +259,7 @@ import axios from 'axios';
 
                     })
                     .catch(error=>{
-
+                        console.log(error);
                     })
                 }
                 

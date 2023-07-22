@@ -22,7 +22,8 @@
                 </div>
                 <div>
                     <user-component/>
-                </div>
+                    
+                </div><div><bet-component/></div>
             </div>
         </div>
     </div>
