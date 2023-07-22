@@ -33,10 +33,6 @@ export default {
             return{
                 all_products:{},
                 summary:{},
-                headers: {
-                    'X-RapidAPI-Key': 'c34e0f5712msh4298147ecdd4eebp147894jsnd3bd548e9af7',
-                    'X-RapidAPI-Host': 'demo-project42818.p.rapidapi.com'
-                },
             }
         },
         methods:{
@@ -50,7 +46,8 @@ export default {
                     limit: '40'
                 },
                 headers: {
-                    'X-RapidAPI-Key': 'c34e0f5712msh4298147ecdd4eebp147894jsnd3bd548e9af7',
+                    // 34e0f5712msh4298147ecdd4eebp147894jsnd3bd548e9af7
+                    'X-RapidAPI-Key': '',
                     'X-RapidAPI-Host': 'demo-project42818.p.rapidapi.com'
                 },
                 params:{
