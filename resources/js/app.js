@@ -4,8 +4,21 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
+
+
 import { createApp } from 'vue';
+// import Vuetify from 'vuetify';
+// import 'vuetify/dist/vuetify.min.css';
+import './bootstrap';
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,6 +26,7 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
+// const vuetify = new Vuetify();
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
@@ -27,7 +41,7 @@ app.component('example-component', ExampleComponent);
 app.component('create-component',CreateComponent );
 app.component('user-component',UserComponent);
 app.component('bet-component',BetComponent);
-
+// app.use(Vuetify); 
 // app.component('pagination',);
 
 /**
@@ -48,4 +62,4 @@ app.component('bet-component',BetComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.use(vuetify).mount('#app');

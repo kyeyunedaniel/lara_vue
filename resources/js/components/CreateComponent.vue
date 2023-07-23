@@ -1,4 +1,5 @@
 <template>
+    <!-- <v-app> -->
     <div class="text-center" v-if="isLoading" >
         <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
         <span class="sr-only">Loading...</span>
@@ -73,9 +74,9 @@
                                 <td>{{students.email}}</td>
                                 <td>{{students.phone_number}}</td>
                                 <td>
-                                    <button type="button" @click="editStudent(students.id)"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <v-btn variant="tonal" density="default" size="small"  @click="editStudent(students.id)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Edit
-                                    </button><br> <br>
+                                    </v-btn><br> <br>
                                     <button type="button" @click="select_delete(students.id)" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
                                     Delete
                                     </button>
@@ -116,7 +117,7 @@
                         </div>
                         <!-- <input type="text" v-model="edit_id" name="id"> -->
                         <br>
-                        <button type="submit" @click.prevent="save_edited(edit_id)" data-dismiss="modal" class="btn btn-primary">Submit</button>
+                        <v-btn variant="tonal" size="x-small" type="submit" @click.prevent="save_edited(edit_id)" data-dismiss="modal" class="btn btn-primary">Edit</v-btn>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -153,6 +154,7 @@
             
         
     </div>
+    <!-- </v-app> -->
 </template>
 
 
