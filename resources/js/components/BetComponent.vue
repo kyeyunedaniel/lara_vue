@@ -47,6 +47,7 @@ export default {
                 },
                 headers: {
                     // 34e0f5712msh4298147ecdd4eebp147894jsnd3bd548e9af7
+                    // 34e0f5712msh4298147ecdd4eebp
                     'X-RapidAPI-Key': '',
                     'X-RapidAPI-Host': 'demo-project42818.p.rapidapi.com'
                 },
