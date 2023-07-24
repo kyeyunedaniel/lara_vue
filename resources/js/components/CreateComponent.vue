@@ -90,6 +90,29 @@
                 </div>
             </div>
         </div>
+        <div>
+            <!-- we are here now
+            <Draggable :list="students_data" :options="dragOptions" @change="onDrag">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(student, index) in students_data" :key="student.id">
+                        <td scope="row">{{ index + 1 }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.phone_number }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </Draggable> -->
+        </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -162,6 +185,7 @@
 
 <script>
 import axios from 'axios';
+// import Draggable from 'vuedraggable';
 
     export default {
         data(){
@@ -175,10 +199,30 @@ import axios from 'axios';
                 edit_phone_number:"",
                 edit_id:"",
                 id_delete:"",
-                isLoading:false
+                isLoading:false,
+                dragOptions: {
+                animation: 200,
+                group: 'studentsGroup',
+                disabled: false,
+                ghostClass: 'drag-ghost',
+                chosenClass: 'drag-chosen',
+                handle: 'tbody', // You can change this to specify a specific element as the drag handle
+                },
+
+                dragOptions: {
+                animation: 200,
+                group: 'studentsGroup',
+                disabled: false,
+                ghostClass: 'drag-ghost',
+                chosenClass: 'drag-chosen',
+                handle: 'tbody',
+            },
             };
         },
             methods:{
+//                 components: {
+//     Draggable,
+//   },
                 saveStudent(){
                     // alert('student saved ');
                     this.isLoading = true;
@@ -264,6 +308,9 @@ import axios from 'axios';
                     .catch(error=>{
                         console.log(error);
                     })
+                },
+                onDrag(){
+                    console.log('am done dragging');
                 }
                 
 
