@@ -29,10 +29,11 @@
 
                     <div class="card-body">
                         <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" v-model="name" class="form-control" placeholder="Enter Name">
-                        </div>
+                        <!-- <div class="form-group"> -->
+                            <!-- <label for="exampleInputEmail1">Name</label> -->
+                            <!-- <input type="text" v-model="name" class="form-control" placeholder="Enter Name"> -->
+                            <v-text-field variant="underlined" v-model="name" label="Name" placeholder="Enter Name" type="text"></v-text-field>
+                        <!-- </div> -->
                         <br>
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
