@@ -1,6 +1,6 @@
 <template>
     <v-app id="inspire">
-        <v-app-bar app color="white" scroll-behavior="collapse elevate hide" scroll-threshold="1000"> 
+        <v-app-bar> 
             <template v-slot:append>
                 <v-btn color="success" icon="mdi-heart"></v-btn>
                
