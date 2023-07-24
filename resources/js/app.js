@@ -8,7 +8,8 @@
 
 import { createApp } from 'vue';
 // import Vuetify from 'vuetify';
-// import 'vuetify/dist/vuetify.min.css';
+import 'vuetify/dist/vuetify.min.css';
+import '@mdi/font/css/materialdesignicons.css'
 import './bootstrap';
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -33,6 +34,7 @@ import ExampleComponent from './components/ExampleComponent.vue';
 import CreateComponent from './components/CreateComponent.vue';
 import UserComponent from './components/UserComponent.vue'
 import BetComponent from './components/BetComponent.vue'
+import NavigationBar from './components/NavigationBar.vue'
 import { Bootstrap4Pagination } from 'laravel-vue-pagination';
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 import { TailwindPagination } from 'laravel-vue-pagination';
@@ -41,6 +43,7 @@ app.component('example-component', ExampleComponent);
 app.component('create-component',CreateComponent );
 app.component('user-component',UserComponent);
 app.component('bet-component',BetComponent);
+app.component('navigation-bar', NavigationBar);
 // app.use(Vuetify); 
 // app.component('pagination',);
 
