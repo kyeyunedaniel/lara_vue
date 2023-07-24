@@ -1,8 +1,8 @@
 <template>
     <v-app id="inspire">
-        <v-app-bar scroll-behavior="collapse elevate hide" scroll-threshold="1000"> 
+        <v-app-bar app color="white" scroll-behavior="collapse elevate hide" scroll-threshold="1000"> 
             <template v-slot:append>
-                <v-btn icon="mdi-heart"></v-btn>
+                <v-btn color="success" icon="mdi-heart"></v-btn>
                
 
                 <v-btn icon="mdi-magnify"></v-btn>
@@ -10,7 +10,6 @@
                 <v-btn icon="mdi-dots-vertical"></v-btn>
             </template>
         </v-app-bar>
-  
       <v-navigation-drawer v-model="drawer">
         <v-sheet
           color="grey-lighten-4"
@@ -90,7 +89,7 @@
   
     const cards = ['Today', 'Yesterday']
     const links = [
-      ['mdi-inbox-arrow-down', 'Inbox'],
+      ['mdi-inbox-arrow-down','Home'],
       ['mdi-send', 'Send'],
       ['mdi-delete', 'Trash'],
       ['mdi-alert-octagon', 'Spam'],
@@ -105,7 +104,7 @@
         cards: ['Today', 'Yesterday'],
         drawer: null,
         links: [
-          ['mdi-inbox-arrow-down', 'Inbox'],
+          ['mdi-inbox-arrow-down', 'Home'],
           ['mdi-send', 'Send'],
           ['mdi-delete', 'Trash'],
           ['mdi-alert-octagon', 'Spam'],
