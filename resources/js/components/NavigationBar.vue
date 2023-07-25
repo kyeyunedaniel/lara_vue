@@ -7,19 +7,25 @@
       </v-app-bar>
   
       <!-- Navigation drawer -->
-      <v-navigation-drawer class="bg-deep-purple"
+      <!-- -deep-purple -->
+      <v-navigation-drawer
         theme="dark" app v-model="drawerOpen">
         <!-- Drawer content here -->
-        <v-list color="transparent">
-        <router-link to="/home">
-            <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" ></v-list-item>
+        <v-list color="white">
+
+        <router-link to="/home" style="text-decoration: none; color: inherit;">
+        <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="Dahboard"></v-list-item>
         </router-link>
 
-        <router-link to="/posts">
+        <!-- <router-link to="/posts"> -->
             <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
+        <!-- </router-link> -->
+
+        <router-link to="/posts" style="text-decoration: none; color: inherit;">
+        <v-list-item prepend-icon="mdi-email" title="Inbox" value="inbox"></v-list-item>
         </router-link>
 
-          <v-list-item prepend-icon="mdi-gavel" title="Statistics"></v-list-item>
+        <v-list-item prepend-icon="mdi-gavel" title="Statistics"></v-list-item>
         </v-list>
 
         <template v-slot:append>
@@ -46,8 +52,25 @@
         </v-container>
       </v-main>
     </v-app>
-  </template>
-  
+  </template> 
+  <style>
+    /* styles.css */
+/* .router-link-exact-active { */
+  /* This will remove the default blue color on active links */
+  /* color: "white";  */
+  /* You can also set a specific color here if you prefer */
+  /* text-decoration: none;  */
+  /* This will remove the underline */
+/* } */
+/* .router-link-exact-inactive { */
+  /* This will remove the default blue color on active links */
+  /* color: 'white' ; */
+   /* You can also set a specific color here if you prefer */
+  /* text-decoration: none;  */
+  /* This will remove the underline */
+/* } */
+
+</style>
   <script>
   export default {
     data() {
@@ -65,4 +88,3 @@
     },
   };
   </script>
-  
