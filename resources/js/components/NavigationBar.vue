@@ -11,11 +11,13 @@
         theme="dark" app v-model="drawerOpen">
         <!-- Drawer content here -->
         <v-list color="transparent">
+        <router-link to="/home">
+            <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" ></v-list-item>
+        </router-link>
 
-         <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" ></v-list-item>
-
-
-          <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
+        <router-link to="/posts">
+            <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
+        </router-link>
 
           <v-list-item prepend-icon="mdi-gavel" title="Statistics"></v-list-item>
         </v-list>
@@ -35,12 +37,12 @@
         <!-- Your main app content here -->
         <!-- For example: -->
         <v-container>
-          <v-row>
-            <v-col cols="12">
-              <h1>Welcome to My App</h1>
-              <router-view></router-view> 
-            </v-col>
-          </v-row>
+          <!-- <v-row> -->
+            <!-- <v-col cols="12"> -->
+              <!-- <h1>Welcome to My App</h1> -->
+              <router-view/>
+            <!-- </v-col> -->
+          <!-- </v-row> -->
         </v-container>
       </v-main>
     </v-app>

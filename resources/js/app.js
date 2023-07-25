@@ -33,9 +33,9 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import CreateComponent from './components/CreateComponent.vue';
-import UserComponent from './components/UserComponent.vue'
-import BetComponent from './components/BetComponent.vue'
-import NavigationBar from './components/NavigationBar.vue'
+import UserComponent from './components/UserComponent.vue';
+import BetComponent from './components/BetComponent.vue';
+import NavigationBar from './components/NavigationBar.vue';
 import { Bootstrap4Pagination } from 'laravel-vue-pagination';
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 import { TailwindPagination } from 'laravel-vue-pagination';
@@ -48,7 +48,7 @@ app.component('navigation-bar', NavigationBar);
 // app.use(Vuetify); 
 // app.component('pagination',);
 const routes = [ 
-  { path: '/', component:CreateComponent},
+  { path: '/home', component:CreateComponent},
   { path: '/posts', component:ExampleComponent},
 ] 
 
@@ -74,4 +74,4 @@ const router = createRouter({
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.use(vuetify, router).mount('#app');
+app.use(vuetify).use(router).mount('#app');
