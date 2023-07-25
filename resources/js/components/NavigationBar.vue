@@ -30,7 +30,7 @@
 
         <template v-slot:append>
           <div class="pa-2">
-            <v-btn block>
+            <v-btn block @click="logOut">
               Logout
             </v-btn>
           </div>
@@ -84,6 +84,14 @@
       },
       alerting(){
         alert('button clicked');
+      },
+      logOut(){
+        axios.post('')
+        .then(response=>{console.log(response)})
+        .catch(error=>{
+            console.log(error)
+        })
+
       }
     },
   };

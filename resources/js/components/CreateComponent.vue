@@ -242,7 +242,11 @@ import axios from 'axios';
                         // Perform data handling after loading is complete
                         this.getStudents();
                         $(MessageModal).modal('show');
-                        }, 100); // Replace 2000 with the actual time it takes to load the data
+                        }, 100)
+                        .catch(error=>{
+
+                            console.log(error)
+                        }) // Replace 2000 with the actual time it takes to load the data
                     
                         // this.getStudents();
                         // $(MessageModal).modal('show');
@@ -311,7 +315,8 @@ import axios from 'axios';
                 },
                 onDrag(){
                     console.log('am done dragging');
-                }
+                },
+                
                 
 
             }
