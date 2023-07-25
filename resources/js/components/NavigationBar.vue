@@ -11,8 +11,12 @@
         theme="dark" app v-model="drawerOpen">
         <!-- Drawer content here -->
         <v-list color="transparent">
-         <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard"></v-list-item>
+
+         <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" ></v-list-item>
+
+
           <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
+
           <v-list-item prepend-icon="mdi-gavel" title="Statistics"></v-list-item>
         </v-list>
 
@@ -34,6 +38,7 @@
           <v-row>
             <v-col cols="12">
               <h1>Welcome to My App</h1>
+              <router-view></router-view> 
             </v-col>
           </v-row>
         </v-container>
@@ -52,6 +57,9 @@
       toggleDrawer() {
         this.drawerOpen = !this.drawerOpen;
       },
+      alerting(){
+        alert('button clicked');
+      }
     },
   };
   </script>

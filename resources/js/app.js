@@ -13,6 +13,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import './bootstrap';
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
+import { createRouter, createWebHistory } from 'vue-router' 
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
@@ -46,7 +47,15 @@ app.component('bet-component',BetComponent);
 app.component('navigation-bar', NavigationBar);
 // app.use(Vuetify); 
 // app.component('pagination',);
+const routes = [ 
+  { path: '/', component:CreateComponent},
+  { path: '/posts', component:ExampleComponent},
+] 
 
+const router = createRouter({ 
+  history: createWebHistory(),
+  routes
+}) 
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -65,4 +74,4 @@ app.component('navigation-bar', NavigationBar);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.use(vuetify).mount('#app');
+app.use(vuetify, router).mount('#app');
