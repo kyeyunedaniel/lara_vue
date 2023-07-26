@@ -5,9 +5,12 @@
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Lara Vue</v-toolbar-title>
         <p class="font-weight-regular ma-4">Hello {{current_user}}</p>
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
+
+        <v-badge color="transparent" overlap class="ma-4">
+          <v-icon>mdi-cart</v-icon>
+          <span class="custom-badge">42</span>
+        </v-badge>
+
       </v-app-bar>
   
       <!-- Navigation drawer -->
@@ -113,3 +116,12 @@
 
   };
   </script>
+
+<style>
+.custom-badge {
+  background-color: pink;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 50%;
+}
+</style>
