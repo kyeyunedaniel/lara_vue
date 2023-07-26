@@ -4,6 +4,9 @@
       <v-app-bar app>
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Lara Vue</v-toolbar-title>
+        <p class="font-weight-regular ma-4">
+      Hello {{curent_user}}
+    </p>
       </v-app-bar>
   
       <!-- Navigation drawer -->
@@ -12,8 +15,8 @@
         theme="dark" app v-model="drawerOpen">
         <!-- Drawer content here -->
         <v-list color="white">
-
-        <router-link to="/home" style="text-decoration: none; color: inherit;">
+          <!-- :class="{ active: $route.path === '/home' }" -->
+        <router-link :to="{name:'home'}" exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
         <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="Dahboard"></v-list-item>
         </router-link>
 
@@ -21,7 +24,7 @@
             <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
         <!-- </router-link> -->
 
-        <router-link to="/posts" style="text-decoration: none; color: inherit;">
+        <router-link to="/posts" :exact="true" active-class="v-item-active" style="text-decoration: none; color: inherit;">
         <v-list-item prepend-icon="mdi-email" title="Inbox" value="inbox"></v-list-item>
         </router-link>
 
@@ -54,33 +57,30 @@
     </v-app>
   </template> 
   <style>
-    /* styles.css */
-/* .router-link-exact-active { */
-  /* This will remove the default blue color on active links */
-  /* color: "white";  */
-  /* You can also set a specific color here if you prefer */
-  /* text-decoration: none;  */
-  /* This will remove the underline */
-/* } */
-/* .router-link-exact-inactive { */
-  /* This will remove the default blue color on active links */
-  /* color: 'white' ; */
-   /* You can also set a specific color here if you prefer */
-  /* text-decoration: none;  */
-  /* This will remove the underline */
-/* } */
+  
 
 </style>
   <script>
   export default {
     data() {
       return {
+        curent_user:'',
         drawerOpen: true, // For controlling the navigation drawer's open/close state
       };
     },
     methods: {
       toggleDrawer() {
         this.drawerOpen = !this.drawerOpen;
+      },
+      attain_current_user(){
+        axios.get('')
+        .then(response=>{
+          console.log(response.data)
+          this
+        })
+        .catch(error=>{
+          console.log(error)
+        })
       },
       alerting(){
         alert('button clicked');

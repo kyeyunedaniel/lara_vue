@@ -48,8 +48,9 @@ app.component('navigation-bar', NavigationBar);
 // app.use(Vuetify); 
 // app.component('pagination',);
 const routes = [ 
-  { path: '/home', component:CreateComponent},
+  { path: '/home', component:CreateComponent, name:'home'},
   { path: '/posts', component:ExampleComponent},
+  // { path: '/login', name: 'login' }
 ] 
 
 const router = createRouter({ 
