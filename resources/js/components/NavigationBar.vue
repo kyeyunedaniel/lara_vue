@@ -11,24 +11,26 @@
   
       <!-- Navigation drawer -->
       <!-- -deep-purple -->
-      <v-navigation-drawer
-        theme="dark" app v-model="drawerOpen">
+      <v-navigation-drawer theme="light" v-model="drawerOpen">
         <!-- Drawer content here -->
-        <v-list color="white">
-          <!-- :class="{ active: $route.path === '/home' }" -->
-        <router-link :to="{name:'home'}" exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
-        <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="Dahboard"></v-list-item>
-        </router-link>
+        <!-- color="white" -->
+        <v-list>
 
-        <!-- <router-link to="/posts"> -->
-            <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
-        <!-- </router-link> -->
+          <router-link :to="{name:'home'}" exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
+            <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="Dahboard"></v-list-item>
+          </router-link>
+          
+          <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
 
-        <router-link to="/posts" :exact="true" active-class="v-item-active" style="text-decoration: none; color: inherit;">
-        <v-list-item prepend-icon="mdi-email" title="Inbox" value="inbox"></v-list-item>
-        </router-link>
 
-        <v-list-item prepend-icon="mdi-gavel" title="Statistics"></v-list-item>
+          <router-link to="/posts" :exact="true" active-class="v-item-active" style="text-decoration: none; color: inherit;">
+            <v-list-item prepend-icon="mdi-email" title="Inbox" value="inbox"></v-list-item>
+          </router-link>
+
+          <router-link :to="{name:'account'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
+            <v-list-item prepend-icon="mdi-gavel" title="Statistics" value="statistics"></v-list-item>
+          </router-link>
+      
         </v-list>
 
         <template v-slot:append>

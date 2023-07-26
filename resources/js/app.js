@@ -35,21 +35,27 @@ import ExampleComponent from './components/ExampleComponent.vue';
 import CreateComponent from './components/CreateComponent.vue';
 import UserComponent from './components/UserComponent.vue';
 import BetComponent from './components/BetComponent.vue';
+import AccountComponent from './components/AccountComponent.vue';
 import NavigationBar from './components/NavigationBar.vue';
+
+
 import { Bootstrap4Pagination } from 'laravel-vue-pagination';
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 import { TailwindPagination } from 'laravel-vue-pagination';
 
 app.component('example-component', ExampleComponent);
-app.component('create-component',CreateComponent );
+// app.component('create-component',CreateComponent );
 app.component('user-component',UserComponent);
 app.component('bet-component',BetComponent);
 app.component('navigation-bar', NavigationBar);
+// app.component('account-componen', AccountComponent);
 // app.use(Vuetify); 
 // app.component('pagination',);
+
 const routes = [ 
   { path: '/home', component:CreateComponent, name:'home'},
   { path: '/posts', component:ExampleComponent},
+  {path:'/account',component:AccountComponent, name:'account'}
   // { path: '/login', name: 'login' }
 ] 
 
