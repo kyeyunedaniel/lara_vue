@@ -318,7 +318,16 @@ import axios from 'axios';
                 onDrag(){
                     console.log('am done dragging');
                 },
-                
+                currentUser(){
+        axios.get('current_user_name')
+        .then(response=>{
+          console.log(response.data)
+          // current_user:this.response.current_user;
+        })
+        .catch(error=>{
+          console.log(error)
+        })
+      }
                 
 
             }
@@ -326,6 +335,7 @@ import axios from 'axios';
         mounted() {
             console.log('Component mounted.')
             this.getStudents();
+            this
     }
     
     }

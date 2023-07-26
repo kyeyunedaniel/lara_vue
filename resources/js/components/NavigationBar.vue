@@ -61,6 +61,7 @@
 
 </style>
   <script>
+  import axios from 'axios';
   export default {
     data() {
       return {
@@ -72,19 +73,22 @@
       toggleDrawer() {
         this.drawerOpen = !this.drawerOpen;
       },
-      attain_current_user(){
-        axios.get('')
+
+      currentUser(){
+        axios.get('current_user_name')
         .then(response=>{
           console.log(response.data)
-          this
+          // current_user:this.response.current_user;
         })
         .catch(error=>{
           console.log(error)
         })
       },
+
       alerting(){
         alert('button clicked');
       },
+
       logOut(){
         console.log('you are attempting to logout')
         axios.post('/logout')
@@ -100,5 +104,10 @@
 
       }
     },
+    mounted(){
+      console.log('navbar mounted')
+      this.currentUser()
+    }
+
   };
   </script>

@@ -21,7 +21,8 @@ class UserController extends Controller
         return view('bet_api');
     }
 
-    public function current_user(){
-        $current_user = Auth::user()->name;
-     }
+    // public function current_user(){
+    //     $current_user = Auth::user()->name;
+    //     return $current_user;
+    //  }
 }
