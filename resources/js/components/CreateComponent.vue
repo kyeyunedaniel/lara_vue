@@ -238,15 +238,16 @@ import axios from 'axios';
                         this.phone_number="";
                         
                         setTimeout(() => {
+                            
                         this.isLoading = false;
                         // Perform data handling after loading is complete
                         this.getStudents();
                         $(MessageModal).modal('show');
                         }, 100)
-                        .catch(error=>{
+                        // .catch(error=>{
 
-                            console.log(error)
-                        }) // Replace 2000 with the actual time it takes to load the data
+                        //     console.log(error)
+                        // }) // Replace 2000 with the actual time it takes to load the data
                     
                         // this.getStudents();
                         // $(MessageModal).modal('show');
