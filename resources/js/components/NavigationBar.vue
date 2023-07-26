@@ -86,8 +86,14 @@
         alert('button clicked');
       },
       logOut(){
-        axios.post('')
-        .then(response=>{console.log(response)})
+        console.log('you are attempting to logout')
+        axios.post('/logout')
+        .then(response=>{
+          console.log(response)
+          localStorage.removeItem('access_token');
+          window.location.href = '/login'
+          location.reload()
+        })
         .catch(error=>{
             console.log(error)
         })
