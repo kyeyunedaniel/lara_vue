@@ -4,9 +4,10 @@
       <v-app-bar app>
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Lara Vue</v-toolbar-title>
-        <p class="font-weight-regular ma-4">
-      Hello {{current_user}}
-    </p>
+        <p class="font-weight-regular ma-4">Hello {{current_user}}</p>
+        <v-btn icon>
+          <v-icon>mdi-heart</v-icon>
+        </v-btn>
       </v-app-bar>
   
       <!-- Navigation drawer -->
