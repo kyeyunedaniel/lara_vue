@@ -8,7 +8,7 @@
 
         <v-badge color="transparent" overlap class="ma-4">
           <v-icon>mdi-cart</v-icon>
-          <span class="custom-badge">42</span>
+          <span class="custom-badge">{{ cart_items }}</span>
         </v-badge>
 
       </v-app-bar>
@@ -36,6 +36,9 @@
           </router-link>
       
         </v-list>
+        <v-btn @click="addCartItem">
+          Add
+        </v-btn>
 
         <template v-slot:append>
           <div class="pa-2">
@@ -73,6 +76,7 @@
       return {
         current_user:null,
         drawerOpen: true, // For controlling the navigation drawer's open/close state
+        cart_items:10
       };
     },
     methods: {
@@ -107,6 +111,10 @@
             console.log(error)
         })
 
+      },
+      addCartItem(){
+        this.cart_items = this.cart_items+1
+        // console.log('you added item to the cart '+this.cart_items)
       }
     },
     mounted(){
@@ -120,7 +128,7 @@
 <style>
 .custom-badge {
   background-color: pink;
-  font-size: 12px;
+  font-size: 11px;
   padding: 4px;
   border-radius: 50%;
 }
