@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -49,5 +50,11 @@ class StudentController extends Controller
         $student = Student::findorfail($id);
         $student->delete();
         return ('user has been deleted');
+    }
+
+    public function CurrentUser(){
+            $User = Auth::user()->name;
+
+            return $User;
     }
 }
