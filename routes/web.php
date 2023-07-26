@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::middleware('throttle:200,1')->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('save_student','App\Http\Controllers\StudentController@save_student')->name('save_student.home');
 Route::get('list_students','App\Http\Controllers\StudentController@list_students')->name('list_student.home');
@@ -29,3 +29,4 @@ Route::post('delete_student/{id}','App\Http\Controllers\StudentController@delete
 Route::post('save_user','App\Http\Controllers\UserController@save');
 Route::get('bet_api','App\Http\Controllers\UserController@BetApi');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'] )->where('any','.*');
+});
