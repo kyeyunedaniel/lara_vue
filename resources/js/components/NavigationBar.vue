@@ -5,7 +5,7 @@
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Lara Vue</v-toolbar-title>
         <p class="font-weight-regular ma-4">
-      Hello {{curent_user}}
+      Hello {{current_user}}
     </p>
       </v-app-bar>
   
@@ -65,7 +65,7 @@
   export default {
     data() {
       return {
-        curent_user:'',
+        current_user:null,
         drawerOpen: true, // For controlling the navigation drawer's open/close state
       };
     },
@@ -78,7 +78,7 @@
         axios.get('current_user_name')
         .then(response=>{
           console.log(response.data)
-          // current_user:this.response.current_user;
+          this.current_user = response.data;
         })
         .catch(error=>{
           console.log(error)
@@ -90,13 +90,12 @@
       },
 
       logOut(){
-        console.log('you are attempting to logout')
+        
         axios.post('/logout')
         .then(response=>{
-          console.log(response)
-          localStorage.removeItem('access_token');
-          window.location.href = '/login'
+          console.log('you are attempting to logout')
           location.reload()
+          
         })
         .catch(error=>{
             console.log(error)
