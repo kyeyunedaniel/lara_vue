@@ -54,7 +54,7 @@ class StudentController extends Controller
 
     public function CurrentUser(){
             $User = Auth::user()->name;
-
+            
             return $User;
     }
 }

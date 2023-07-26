@@ -335,7 +335,6 @@ import axios from 'axios';
         mounted() {
             console.log('Component mounted.')
             this.getStudents();
-            this
     }
     
     }
