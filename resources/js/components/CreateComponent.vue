@@ -46,7 +46,7 @@
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <br>
-                        <button type="submit" v-on:click.prevent="saveStudent" class="btn btn-primary">Submit</button>
+                        <v-btn type="submit" variant="flat" color="green" v-on:click.prevent="saveStudent" >Submit</v-btn>
                         </form>
                     </div>
                 </div>
@@ -75,12 +75,12 @@
                                 <td>{{students.email}}</td>
                                 <td>{{students.phone_number}}</td>
                                 <td>
-                                    <v-btn variant="tonal" density="default" size="small"  @click="editStudent(students.id)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <v-btn variant="tonal" size="x-small" @click="editStudent(students.id)" color="black" data-toggle="modal" data-target="#exampleModal">
                                     Edit
                                     </v-btn><br> <br>
-                                    <button type="button" @click="select_delete(students.id)" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <v-btn variant="tonal" color="red" size="x-small" @click="select_delete(students.id)"  data-toggle="modal" data-target="#exampleModalCenter">
                                     Delete
-                                    </button>
+                                    </v-btn>
                                 </td>
                                 <!-- <td>{{students.id}} </td> -->
                                 </tr>

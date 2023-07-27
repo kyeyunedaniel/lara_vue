@@ -1,5 +1,5 @@
 <template>
-    dashboard component new new 
+    Account component new new 
     <br>
     <!-- <v-btn @addingCart="CartCount($event)">Add to cart</v-btn> -->
     <v-btn @click="CartCount">Add to cart</v-btn>
