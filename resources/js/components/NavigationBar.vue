@@ -4,9 +4,22 @@
       <v-app-bar app>
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Lara Vue</v-toolbar-title>
-        <p class="font-weight-regular ma-4">Hello {{current_user}}</p>
+        <p class="font-weight-regular ma-4 text-capitalise">{{current_user}}</p>
+        <v-menu transition="scale-transition" class="text-center">
+            <template v-slot:activator="{ props }">
+              <v-btn color="primary" v-bind="props">
+                <p class="font-weight-regular ma-4 text-capitalise">{{current_user}}</p>
+                <!-- <v-icon>mdi-dialpad</v-icon> -->
+              </v-btn>
+            </template>
 
-        <v-badge color="transparent" overlap class="ma-4">
+            <v-list class="text-left">
+              <v-list-item-title class="text-caption ma-4">DashBoard</v-list-item-title>
+              <v-list-item-title class="text-caption ma-4">Payment Info</v-list-item-title>
+            </v-list>
+        </v-menu>
+
+        <v-badge color="transparent" overlap class="ma-2">
           <v-icon>mdi-cart</v-icon>
           <span class="custom-badge">{{ CartItems }}</span>
         </v-badge>
@@ -72,11 +85,11 @@
 </style>
   <script>
   import axios from 'axios';
-  import AccountComponent from './AccountComponent.vue';
+  // import AccountComponent from './AccountComponent.vue';
 
   export default {
     components: {
-      AccountComponent
+      // AccountComponent
     },
     data() {
       return {
