@@ -14,7 +14,7 @@
         },
         data(){
             return{
-                niData:11
+                niData:1
             }
         },
 

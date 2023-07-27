@@ -82,7 +82,7 @@
       return {
         current_user:null,
         drawerOpen: true, // For controlling the navigation drawer's open/close state
-        CartItems:10
+        CartItems:0
       };
     },
     methods: {
