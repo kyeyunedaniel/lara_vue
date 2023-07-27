@@ -8,7 +8,7 @@
 
         <v-badge color="transparent" overlap class="ma-4">
           <v-icon>mdi-cart</v-icon>
-          <span class="custom-badge">{{ cart_items }}</span>
+          <span class="custom-badge">{{ CartItems }}</span>
         </v-badge>
 
       </v-app-bar>
@@ -36,9 +36,10 @@
           </router-link>
       
         </v-list>
-        <v-btn @click="addCartItem">
+        <v-btn v-on:custom-cart-event="addCartItem($event)">
           Add
         </v-btn>
+
 
         <template v-slot:append>
           <div class="pa-2">
@@ -71,12 +72,17 @@
 </style>
   <script>
   import axios from 'axios';
+  import AccountComponent from './AccountComponent.vue';
+
   export default {
+    components: {
+      AccountComponent
+    },
     data() {
       return {
         current_user:null,
         drawerOpen: true, // For controlling the navigation drawer's open/close state
-        cart_items:10
+        CartItems:10
       };
     },
     methods: {
@@ -112,8 +118,11 @@
         })
 
       },
-      addCartItem(){
-        this.cart_items = this.cart_items+1
+      addCartItem(ndata){
+        // this.CartItems = this.CartItems+1
+        // console.log(ndata);
+        console.log('emitted value is received'+ ndata);
+        // this.$emit('addingCart',11);
         // console.log('you added item to the cart '+this.cart_items)
       }
     },
