@@ -4,18 +4,22 @@
       <v-app-bar app>
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Lara Vue</v-toolbar-title>
-        <p class="font-weight-regular ma-4 text-capitalise">{{current_user}}</p>
+        <!-- <p class="font-weight-regular ma-4 text-capitalise">{{current_user}}</p> -->
         <v-menu transition="scale-transition" class="text-center">
             <template v-slot:activator="{ props }">
-              <v-btn color="primary" v-bind="props">
-                <p class="font-weight-regular ma-4 text-capitalise">{{current_user}}</p>
-                <!-- <v-icon>mdi-dialpad</v-icon> -->
+              <v-btn v-bind="props">
+                <p class="font-weight-regular ma-2 text-capitalise">{{current_user}}</p>
+                <v-icon>mdi-account-arrow-down</v-icon>
               </v-btn>
             </template>
 
-            <v-list class="text-left">
-              <v-list-item-title class="text-caption ma-4">DashBoard</v-list-item-title>
-              <v-list-item-title class="text-caption ma-4">Payment Info</v-list-item-title>
+            <v-list class="text-left ma-2">
+              <v-list-item-title class="text-caption ma-2">DashBoard</v-list-item-title>
+              <v-list-item-title class="text-caption ma-2">Payment Info</v-list-item-title>
+              <v-list-item-title class="text-center">
+              <v-btn size="small" :style="{ width: '180px'}" class="ma-1" label="Prepend" append-icon="mdi-logout" style="text-decoration: none; color: red;" @click="logOut">LogOut</v-btn>
+              </v-list-item-title>
+
             </v-list>
         </v-menu>
 
@@ -56,7 +60,7 @@
 
         <template v-slot:append>
           <div class="pa-2">
-            <v-btn block @click="logOut">
+            <v-btn block @click="logOut" append-icon="mdi-logout">
               Logout
             </v-btn>
           </div>
@@ -123,7 +127,7 @@
         axios.post('/logout')
         .then(response=>{
           console.log('you are attempting to logout')
-          location.reload()
+          location.reload();
           
         })
         .catch(error=>{
