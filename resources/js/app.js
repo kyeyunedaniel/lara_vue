@@ -53,9 +53,9 @@ app.component('navigation-bar', NavigationBar);
 // app.component('pagination',);
 
 const routes = [ 
-  { path: '/home', component:CreateComponent, name:'home'},
-  { path: '/posts', component:ExampleComponent},
-  {path:'/account',component:AccountComponent, name:'account'}
+  { path: '/home', component:CreateComponent, name:'home', meta:{needsAuth:false}},
+  { path: '/posts', component:ExampleComponent, meta:{needsAuth:false} },
+  {path:'/account',component:AccountComponent, name:'account', meta:{needsAuth:false} }
   // { path: '/login', name: 'login' }
 ] 
 
@@ -63,6 +63,13 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 }) 
+router.beforeEach((to, from, next)=>{
+  if(to.meta.needsAuth){
+    next("/login")
+  } else{
+    next()
+  }
+})
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

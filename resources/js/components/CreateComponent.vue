@@ -208,6 +208,7 @@ import axios from 'axios';
                 chosenClass: 'drag-chosen',
                 handle: 'tbody', // You can change this to specify a specific element as the drag handle
                 // curent_user:'Alex'
+                needsAuth:false
                 },
 
                 dragOptions: {

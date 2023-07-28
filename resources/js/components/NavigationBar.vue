@@ -35,7 +35,9 @@
   
       <!-- Navigation drawer -->
       <!-- -deep-purple -->
-      <v-navigation-drawer theme="dark" v-model="drawerOpen">
+      <!-- <v-navigation-drawer theme="dark" v-model="drawerOpen"> -->
+
+      <v-navigation-drawer theme="light" v-model="drawerOpen">
         <!-- Drawer content here -->
         <!-- color="white" -->
         <v-list>
@@ -150,6 +152,7 @@
     mounted(){
       console.log('navbar mounted')
       this.currentUser()
+
     }
 
   };
