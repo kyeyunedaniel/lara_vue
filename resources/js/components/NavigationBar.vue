@@ -167,7 +167,7 @@
     mounted(){
       console.log('navbar mounted')
       this.currentUser()
-      .then(console.log('hello'))
+      // .then(console.log('hello'))
       // this.userRole(this.current_user_id)
       // userRole(current_user_id)
       // console.log('the '+this.current_user_id)
