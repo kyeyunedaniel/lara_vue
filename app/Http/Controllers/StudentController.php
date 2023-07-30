@@ -54,7 +54,12 @@ class StudentController extends Controller
 
     public function CurrentUser(){
             $User = Auth::user()->name;
-            
-            return $User;
+            $User_id = Auth::user()->id;
+            $data_user = array(
+                'User'=>$User,
+                'User_id'=>$User_id,
+
+            );
+            return $data_user;
     }
 }

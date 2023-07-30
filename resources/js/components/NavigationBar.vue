@@ -41,8 +41,8 @@
         <!-- Drawer content here -->
         <!-- color="white" -->
         <v-list>
-
-          <router-link :to="{name:'home'}" exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
+          <!-- @if="user_roles.includes('name')" -->
+          <router-link :to="{name:'home'}" exact-active-class="v-item-active" style="text-decoration: none; color: inherit;" >
             <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="Dahboard"></v-list-item>
           </router-link>
           
@@ -103,7 +103,9 @@
     },
     data() {
       return {
+        current_user_id:'',
         current_user:null,
+        user_roles:{},
         drawerOpen: true, // For controlling the navigation drawer's open/close state
         CartItems:0
       };
@@ -117,7 +119,8 @@
         axios.get('current_user_name')
         .then(response=>{
           console.log(response.data)
-          this.current_user = response.data;
+          this.current_user = response.data.User;
+          this.current_user_id = response.data.User_id;
         })
         .catch(error=>{
           console.log(error)
@@ -147,11 +150,28 @@
         console.log('emitted value is received'+ ndata);
         // this.$emit('addingCart',11);
         // console.log('you added item to the cart '+this.cart_items)
+      },
+
+      userRole(current_user_id){
+        axios.get('user_roles/'+current_user_id).then(response=>{
+
+          // console.log(response.data);
+          this.user_roles = response.data;
+        })
+        .catch(error=>{
+          console.log(error)
+        })
       }
+
     },
     mounted(){
       console.log('navbar mounted')
       this.currentUser()
+      .then(console.log('hello'))
+      // this.userRole(this.current_user_id)
+      // userRole(current_user_id)
+      // console.log('the '+this.current_user_id)
+      // this.userRole(this.current_user_id)
 
     }
 

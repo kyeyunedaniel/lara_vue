@@ -29,6 +29,7 @@ Route::post('save_edited/{id}','App\Http\Controllers\StudentController@save_edit
 Route::post('delete_student/{id}','App\Http\Controllers\StudentController@delete_student')->name('delete_student.home');
 Route::post('save_user','App\Http\Controllers\UserController@save');
 Route::get('bet_api','App\Http\Controllers\UserController@BetApi');
+Route::get('user_roles/{user_id}','App\Http\Controllers\RolesController@getRole');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'] )->where('any','.*');
 // Route::get('current_login','App\Http\Controllers\UserController@current_user');
 });
