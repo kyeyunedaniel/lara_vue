@@ -74,6 +74,7 @@
             persistent-hint
             variant="outlined"
           ></v-text-field>
+          <v-btn variant='tonal'  size="small" color="blue" >Submit</v-btn>
         </v-col>
       </v-row>
     </v-container>
