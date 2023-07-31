@@ -62,7 +62,16 @@
           //dont delete it we still need it 
           Add
         </v-btn> -->
+        <li>
+          <v-btn size="small" color="blue" variant="tonal" v-on:Click="user_role(current_id)">Hello button </v-btn>
+        </li >
+        <br/>
+        <!-- this.user_roles_db.includes('admin') -->
 
+        <li v-if="getActualUser">
+          <!-- <li> -->
+          <v-btn size="small" color="blue" variant="tonal">Hello button </v-btn>
+        </li >
 
         <template v-slot:append>
           <div class="pa-2">
@@ -103,9 +112,9 @@
     },
     data() {
       return {
-        current_user_id:'',
+        current_id:null,
         current_user:null,
-        user_roles:{},
+        user_roles_db:{},
         drawerOpen: true, // For controlling the navigation drawer's open/close state
         CartItems:0
       };
@@ -118,9 +127,11 @@
       currentUser(){
         axios.get('current_user_name')
         .then(response=>{
-          console.log(response.data)
+          // console.log(response.data)
           this.current_user = response.data.User;
-          this.current_user_id = response.data.User_id;
+          this.current_id = response.data.User_id;
+          console.log("the current_id is " +this.current_id)
+          console.log('this executes')
         })
         .catch(error=>{
           console.log(error)
@@ -144,6 +155,7 @@
         })
 
       },
+
       addCartItem(ndata){
         // this.CartItems = this.CartItems+1
         // console.log(ndata);
@@ -152,26 +164,34 @@
         // console.log('you added item to the cart '+this.cart_items)
       },
 
-      userRole(current_user_id){
-        axios.get('user_roles/'+current_user_id).then(response=>{
+      user_role(current_id){
+        axios.get('user_roles/'+this.current_id).then(response=>{
+          console.log(response.data.roles_name)
 
-          // console.log(response.data);
-          this.user_roles = response.data;
+          this.user_roles_db = response.data.roles_name;
+          // console.log(this.user_roles_db[1])
+
         })
         .catch(error=>{
           console.log(error)
         })
+      },
+
+      getActualUser(){
+        if(this.user_roles_db.includes('sdfa'))
+          {
+            return true
+          }
       }
 
     },
+
     mounted(){
-      console.log('navbar mounted')
+      console.log('navbar mounted'),
+      // this.userRole(),
       this.currentUser()
-      // .then(console.log('hello'))
-      // this.userRole(this.current_user_id)
-      // userRole(current_user_id)
-      // console.log('the '+this.current_user_id)
-      // this.userRole(this.current_user_id)
+      // this.user_role(this.current_id)
+      // console.log('the current id during mounting is '+current_id)
 
     }
 
