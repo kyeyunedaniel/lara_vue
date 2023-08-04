@@ -17,6 +17,9 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "datatables.net": "^1.13.6",
+        "datatables.net-vue3": "^2.1.2",
+        "jquery": "^3.7.0",
         "laravel-vue-pagination": "^4.1.0",
         "vue-router": "^4.2.4",
         "vuedraggable": "^2.24.3",

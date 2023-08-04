@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     //
-    public function save(Request $request){
+    public function save(Request $request)
+    {
         $user_save = new User;
         $user_save->name = request()->name;
         $user_save->email = request()->email;
         $user_save->password = request()->password;
 
-        return($user_save->name = request()->name);
+        return ($user_save->name = request()->name);
     }
-    public function BetApi(){
+    public function BetApi()
+    {
         return view('bet_api');
     }
 

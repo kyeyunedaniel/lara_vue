@@ -54,7 +54,7 @@
           </router-link>
 
           <router-link :to="{name:'account'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
-            <v-list-item prepend-icon="mdi-gavel" title="Statistics" value="statistics"></v-list-item>
+            <v-list-item prepend-icon="mdi-gavel" title="Dashboard" value="dashboard"></v-list-item>
           </router-link>
       
         </v-list>

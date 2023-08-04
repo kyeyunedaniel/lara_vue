@@ -174,6 +174,41 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MessageModal">
         Launch demo modal
         </button>
+        <br>
+        <br>
+        <br>
+        <div>
+        <table id="dataTable" class="display" style="width:100%">
+        <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">PhoneNumber </th>
+        <th scope="col">Action </th>
+        <!-- <th scope="col">id </th> -->
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(students, index) in students_data" :key="students.id">
+            <td scope="row">{{index+1}}</td>
+            <td>{{ students.name }}</td>
+            <td>{{students.email}}</td>
+            <td>{{students.phone_number}}</td>
+            <td>
+                <v-btn variant="tonal" size="x-small" @click="editStudent(students.id)" color="black" data-toggle="modal" data-target="#exampleModal">
+                Edit
+                </v-btn><br> <br>
+                <v-btn variant="tonal" color="red" size="x-small" @click="select_delete(students.id)"  data-toggle="modal" data-target="#exampleModalCenter">
+                Delete
+                </v-btn>
+            </td>
+            <!-- <td>{{students.id}} </td> -->
+            </tr>
+        </tbody>
+        </table>
+  </div>
 
             
         
@@ -185,6 +220,9 @@
 
 <script>
 import axios from 'axios';
+import 'datatables.net';
+import DataTable from 'datatables.net';
+// import $ from 'jquery';
 // import Draggable from 'vuedraggable';
 
     export default {

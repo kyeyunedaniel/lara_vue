@@ -16,6 +16,7 @@ import { createVuetify } from 'vuetify'
 import { createRouter, createWebHistory } from 'vue-router' 
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import DataTable from 'datatables.net-vue3';
 
 const vuetify = createVuetify({
   components,
