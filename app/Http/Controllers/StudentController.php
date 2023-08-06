@@ -10,32 +10,34 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     //
-    public function save_student(Request $request){
+    public function save_student(Request $request)
+    {
         // return ($request);
         $student = new Student;
         $student->name = request()->name;
         $student->email = request()->email;
         $student->phone_number = request()->phone_number;
         $student->save();
-        
-        return ('student saved');
 
+        return ('student saved');
     }
-    public function list_students(){
+    public function list_students()
+    {
         $students = Student::All();
         // $data = array(
         //     'students'=>$students
         // );
         // return response()->json($data);
         return $students;
-
     }
 
-    public function edit_students($id){
+    public function edit_students($id)
+    {
         $edit = Student::FindOrfail($id);
         return ($edit);
     }
-    public function save_edited($id){
+    public function save_edited($id)
+    {
         // dd('success');
         // $id = request()->edit_id;
         $edit_saved = Student::FindOrfail($id);
@@ -46,20 +48,22 @@ class StudentController extends Controller
         return ('data edited');
     }
 
-    public function delete_student($id){
+    public function delete_student($id)
+    {
         $student = Student::findorfail($id);
         $student->delete();
         return ('user has been deleted');
     }
 
-    public function CurrentUser(){
-            $User = Auth::user()->name;
-            $User_id = Auth::user()->id;
-            $data_user = array(
-                'User'=>$User,
-                'User_id'=>$User_id,
+    public function CurrentUser()
+    {
+        $User = Auth::user()->name;
+        $User_id = Auth::user()->id;
+        $data_user = array(
+            'User' => $User,
+            'User_id' => $User_id,
 
-            );
-            return $data_user;
+        );
+        return $data_user;
     }
 }
