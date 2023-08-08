@@ -33,12 +33,15 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
+          <th scope="col">new</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(product, index) in all_products" :key="product.id">
           <td scope="row">{{ index + 1 }}</td>
           <td>{{ product.name }}</td>
+          <td> <v-btn>Edit</v-btn> </td>
+
         </tr>
       </tbody>
     </table>
