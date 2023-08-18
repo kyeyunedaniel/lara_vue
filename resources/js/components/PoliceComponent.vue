@@ -2,10 +2,10 @@
   Please provide the information below to complete your application
   <br />
 
-  <!-- Error Message Model -->
+  <!-- Success Message Model -->
   <div
     class="modal fade"
-    id="MessageModal"
+    id="SuccessModal"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
@@ -15,22 +15,56 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Success</h5>
           <button
             type="button"
             class="close"
             data-dismiss="modal"
             aria-label="Close"
+            @click.prevent="closeAllModels"
           >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body alert alert-success">
-          Form has been Submitted successfully
+          {{ sucess_message }}
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Error Modal -->
+  <div
+    class="modal fade"
+    id="ErrorModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    ref="message_new_modal"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Error Occured</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            @click.prevent="closeAllModels"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body alert alert-danger">
+          {{ error_message }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
   <v-form>
     <v-container>
@@ -143,8 +177,8 @@ export default {
       residence: "",
       payment_status: "",
       transaction_id: "",
-      error_message:"",
-      sucess_message:""
+      error_message: "",
+      sucess_message: "",
     };
   },
 
@@ -164,17 +198,24 @@ export default {
         })
         .then((response) => {
           console.log(response.data.action_message);
+          this.sucess_message = response.data.action_message;
 
-          $(MessageModal).modal("show");
-
-
+          $(SuccessModal).modal("show");
         })
         .catch((error) => {
-          console.log(error.message);
-        //   console.log(error.error_message)
-
+          //   console.log(error.message);
+          //   console.log(error.error_message)
+          this.error_message = error.message;
+          $(ErrorModal).modal("show");
+          // console.log(this.error_message)
         });
     },
+    closeAllModels(){
+        $(SuccessModal).modal("hide");
+        // console.log('clicked the modal removal button')
+        $(ErrorModal).modal("hide");
+
+    }
   },
   mounted() {
     console.log("hello ");
