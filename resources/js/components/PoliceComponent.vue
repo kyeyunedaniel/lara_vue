@@ -73,6 +73,7 @@
             hint="Your Religious Name"
             variant="solo"
             v-model="first_name"
+            :rules="RequiredRule"
             required
           ></v-text-field>
         </v-col>
@@ -83,6 +84,7 @@
             hint="Your Family Name"
             variant="solo"
             v-model="last_name"
+            :rules="RequiredRule"
             required
           ></v-text-field>
         </v-col>
@@ -155,9 +157,11 @@
       </v-row>
     </v-container>
   </v-form>
+  <payment-component></payment-component>
 </template>
   
   <script>
+  import PaymentComponent from './PaymentComponent.vue';
 export default {
   mounted() {
     console.log("Account mounted.");
@@ -177,6 +181,9 @@ export default {
       transaction_id: "",
       error_message: "",
       sucess_message: "",
+      RequiredRule: [
+        value => !!value || 'Value is required',
+      ],
     };
   },
 
@@ -213,6 +220,9 @@ export default {
       // console.log('clicked the modal removal button')
       $(ErrorModal).modal("hide");
     },
+  },
+  components:{
+    PaymentComponent
   },
   mounted() {
     console.log("hello ");
