@@ -64,8 +64,6 @@
     </div>
   </div>
 
-  
-
   <v-form>
     <v-container>
       <v-row>
@@ -210,12 +208,11 @@ export default {
           // console.log(this.error_message)
         });
     },
-    closeAllModels(){
-        $(SuccessModal).modal("hide");
-        // console.log('clicked the modal removal button')
-        $(ErrorModal).modal("hide");
-
-    }
+    closeAllModels() {
+      $(SuccessModal).modal("hide");
+      // console.log('clicked the modal removal button')
+      $(ErrorModal).modal("hide");
+    },
   },
   mounted() {
     console.log("hello ");
