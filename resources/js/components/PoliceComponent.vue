@@ -87,7 +87,9 @@
         </v-col>
         <br />
         <v-col cols="12">
-          <v-btn variant="elevated" color="blue" @click.prevent="addPolice">Submit</v-btn>
+          <v-btn variant="elevated" color="blue" @click.prevent="addPolice"
+            >Submit</v-btn
+          >
         </v-col>
       </v-row>
     </v-container>
@@ -116,11 +118,26 @@ export default {
   },
 
   methods: {
-    addPolice(){
-        console.log('we are in the police');
-        
-
-    }
+    addPolice() {
+      console.log("we are in the police");
+      axios
+        .post("police_user_new", {
+          first_name: this.first_name,
+          last_name: this.last_name,
+          gender: this.gender,
+          citizenship: this.citizenship,
+          occupation: this.occupation,
+          nin: this.nin,
+          marital_status: this.marital_status,
+          residence: this.residence,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   mounted() {
     console.log("hello ");

@@ -11,6 +11,7 @@ class PoliceController extends Controller
     public function create_data(Request $request){
         try {
             $police = new Police;
+            dd(request());
             $police->first_name = request()->first_name;
             $police->last_name = request()->last_name;
             $police->gender = request()->gender;
@@ -19,7 +20,7 @@ class PoliceController extends Controller
             $police->nin = request()->nin;
             $police->marital_status = request()->marital_status;
             $police->residence = request()->first_name;
-            dd($police);
+            // dd($police);
             $police->save();
 
         }
