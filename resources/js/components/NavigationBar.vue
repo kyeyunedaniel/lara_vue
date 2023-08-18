@@ -18,6 +18,7 @@
               <router-link :to="{name:'account'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
               <v-list-item-title class="text-caption ma-2">DashBoard</v-list-item-title>
             </router-link>
+            
               <v-list-item-title class="text-caption ma-2">Payment Info</v-list-item-title>
               <v-list-item-title class="text-center">
               <v-btn size="small" variant="tonal" :style="{ width: '180px'}" class="ma-1" label="Prepend" append-icon="mdi-logout" style="text-decoration: none; color: none;" @click="logOut">LogOut</v-btn>
@@ -55,6 +56,10 @@
 
           <router-link :to="{name:'account'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
             <v-list-item prepend-icon="mdi-gavel" title="Dashboard" value="dashboard"></v-list-item>
+          </router-link>
+
+          <router-link :to="{name:'police'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
+            <v-list-item prepend-icon="mdi-gavel" title="Police App" value="police"></v-list-item>
           </router-link>
       
         </v-list>

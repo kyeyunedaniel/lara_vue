@@ -38,6 +38,7 @@ import UserComponent from './components/UserComponent.vue';
 import BetComponent from './components/BetComponent.vue';
 import AccountComponent from './components/AccountComponent.vue';
 import NavigationBar from './components/NavigationBar.vue';
+import PoliceComponent from './components/PoliceComponent.vue';
 
 
 import { Bootstrap4Pagination } from 'laravel-vue-pagination';
@@ -49,6 +50,7 @@ app.component('example-component', ExampleComponent);
 app.component('user-component',UserComponent);
 app.component('bet-component',BetComponent);
 app.component('navigation-bar', NavigationBar);
+app.component('police-component',PoliceComponent);
 // app.component('account-componen', AccountComponent);
 // app.use(Vuetify); 
 // app.component('pagination',);
@@ -56,7 +58,8 @@ app.component('navigation-bar', NavigationBar);
 const routes = [ 
   { path: '/home', component:CreateComponent, name:'home', meta:{needsAuth:false}},
   { path: '/posts', component:ExampleComponent, meta:{needsAuth:false} },
-  {path:'/account',component:AccountComponent, name:'account', meta:{needsAuth:false} }
+  {path:'/account',component:AccountComponent, name:'account', meta:{needsAuth:false} },
+  {path:'/police',component:PoliceComponent, name:'police', }
   // { path: '/login', name: 'login' }
 ] 
 
