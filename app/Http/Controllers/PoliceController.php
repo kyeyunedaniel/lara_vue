@@ -8,10 +8,10 @@ use App\Models\Police;
 class PoliceController extends Controller
 {
     //
-    public function create_data(Request $request){
+    public function create_data(Request $request)
+    {
         try {
             $police = new Police;
-            dd(request());
             $police->first_name = request()->first_name;
             $police->last_name = request()->last_name;
             $police->gender = request()->gender;
@@ -20,15 +20,14 @@ class PoliceController extends Controller
             $police->nin = request()->nin;
             $police->marital_status = request()->marital_status;
             $police->residence = request()->first_name;
-            // dd($police);
             $police->save();
+        } catch (\Exception $e) {
+            //   return('there is an error '.$e); 
+              return response()->json(['error_message' => 'an error occured'], 500);
 
         }
-        catch(\Exception $e){
-        //   return('the error is');  
 
-        }
-
-        return ('hello');
+        // return ('hello');
+        return response()->json(['action_message' => 'user data inserted'],200);
     }
 }

@@ -1,8 +1,37 @@
 <template>
   Please provide the information below to complete your application
   <br />
-  <!-- <v-btn @addingCart="CartCount($event)">Add to cart</v-btn> -->
-  <!-- <v-btn @click="CartCount">Add to cart</v-btn> -->
+
+  <!-- Error Message Model -->
+  <div
+    class="modal fade"
+    id="MessageModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    ref="message_new_modal"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body alert alert-success">
+          Form has been Submitted successfully
+        </div>
+      </div>
+    </div>
+  </div>
+
   <v-form>
     <v-container>
       <v-row>
@@ -114,6 +143,8 @@ export default {
       residence: "",
       payment_status: "",
       transaction_id: "",
+      error_message:"",
+      sucess_message:""
     };
   },
 
@@ -132,10 +163,16 @@ export default {
           residence: this.residence,
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data.action_message);
+
+          $(MessageModal).modal("show");
+
+
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.message);
+        //   console.log(error.error_message)
+
         });
     },
   },
