@@ -59,7 +59,7 @@ const routes = [
   { path: '/home', component:CreateComponent, name:'home', meta:{needsAuth:false}},
   { path: '/posts', component:ExampleComponent, meta:{needsAuth:false} },
   {path:'/account',component:AccountComponent, name:'account', meta:{needsAuth:false} },
-  {path:'/police',component:PoliceComponent, name:'police', }
+  {path:'/police-app',component:PoliceComponent, name:'police', }
   // { path: '/login', name: 'login' }
 ] 
 
