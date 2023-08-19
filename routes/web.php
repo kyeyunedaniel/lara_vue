@@ -30,8 +30,8 @@ Route::post('delete_student/{id}','App\Http\Controllers\StudentController@delete
 Route::post('save_user','App\Http\Controllers\UserController@save');
 Route::get('bet_api','App\Http\Controllers\UserController@BetApi');
 Route::get('user_roles/{id}','App\Http\Controllers\RolesController@getRole');
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'] )->where('any','.*');
 Route::post('police_user_new','App\Http\Controllers\PoliceController@create_data')->name('create_police.home');
+Route::get('{any}', 'App\Http\Controllers\HomeController@index')->where('any','.*');
 
 // Route::get('current_login','App\Http\Controllers\UserController@current_user');
 });

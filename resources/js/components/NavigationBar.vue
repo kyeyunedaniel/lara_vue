@@ -61,6 +61,10 @@
           <router-link :to="{name:'police'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
             <v-list-item prepend-icon="mdi-gavel" title="Police App" value="police"></v-list-item>
           </router-link>
+
+          <router-link :to="{name:'weather'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
+            <v-list-item prepend-icon="mdi-cloud" title="Weather App" value="weather-app"></v-list-item>
+          </router-link>
       
         </v-list>
         <!-- <v-btn v-on:custom-cart-event="addCartItem($event)">
