@@ -20,7 +20,7 @@
 
             <v-card-actions>
               <v-btn class="ms-2" variant="outlined" size="small">
-                START RADIO
+                VIEW WEATHER
               </v-btn>
             </v-card-actions>
           </div>
