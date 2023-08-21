@@ -11,13 +11,14 @@ class ShortenerController extends Controller
     //
     public function AddLongUrl(Request $request){
         $short = new Shortener;
+        $baseUrl = url('/');
         $short->long_url = request()->long_url;
         // $short->save();
 
         // make the short url and save it 
 
         //get the site url
-        $local_site_url= 'http://127.0.0.1:8000/short/';
+        $local_site_url= $baseUrl.'/short/';
 
         //get the links after to which the get is input 
 
@@ -40,7 +41,8 @@ class ShortenerController extends Controller
     }
 
     public function RetrieveUrl(Request $request, $id){
-        $local_site_url= 'http://127.0.0.1:8000/short/';
+        $baseUrl = url('/');
+        $local_site_url= $baseUrl.'/short/';
         $short_url = $local_site_url.$id;
         $long = Shortener::where('short_url',$short_url)->first();
         $count = $long->clicks_made;
@@ -53,7 +55,6 @@ class ShortenerController extends Controller
 
     public function metrics(Request $request){
 
-        // $local_site_url= 'http://127.0.0.1:8000/short/';
 
         $input_url_short = request()->metricsurl;
 
