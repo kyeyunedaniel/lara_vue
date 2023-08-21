@@ -55,7 +55,7 @@
   <v-card class="mx-auto" max-width="950" variant="outlined">
     <v-card-item v-if="shorturl !== ''">
       <div>
-        <div class="text-overline mb-1">SHORTENED LINK</div>
+        <div class="text-overline">SHORTENED LINK</div>
         <div class="mb-1">Please use the button to copy the shortened link</div>
 
         <v-text-field variant="solo" color="blue">
@@ -72,8 +72,7 @@
           </template>
           {{ shorturl }}
         </v-text-field>
-        <div class="mt-8 text-red">
-          The old link
+        <div class="text-red">
           <v-text-field variant="plain">
             {{ old_url }}
           </v-text-field>
@@ -96,17 +95,27 @@ export default {
       longurl: "",
       shorturl: "",
       old_url: "",
+      check_url:""
     };
   },
   methods: {
     shortenUrl() {
-      const urlPattern = /^(ftp|http|https|www):\/\/[^ "]+$/;
-      if (this.longurl === "") {
+      // const urlPattern = /^(?:(ftp|http|https):\/\/)?(www\.)?([a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}$/;
+      const urlPattern = /^(?:(ftp|http|https):\/\/)?(www\.)?([a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}(\/[^\s]*)?$/;
+      this.check_url = urlPattern.test(this.longurl);
+      console.log(this.check_url)
+      // if(this.check_url = )
+      if (this.longurl === "" || this.check_url==false) {
         // if(!urlPattern.test(this.longurl)){
 
         // alert('insert a url before submitting')
         $(ErrorModal).modal("show");
-      } else {
+      } 
+      else {
+        console.log(this.longurl +'we are testing the url before the if that adds the https')
+        if (!/^https?:\/\//i.test(this.longurl)) {
+        this.longurl='https://' + this.longurl;
+         }
         // console.log(this.longurl);
         axios
           .post("shorten_url", {
@@ -130,6 +139,12 @@ export default {
     },
     clipCopy() {
       console.log("attempting to copy data");
+      try {
+      navigator.clipboard.writeText(this.shorturl);
+      console.log('Text copied to clipboard');
+    } catch (error) {
+      console.error('Failed to copy text:', error);
+    }
     },
   },
 };

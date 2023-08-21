@@ -40,12 +40,9 @@ class ShortenerController extends Controller
     }
 
     public function RetrieveUrl(Request $request, $id){
-        // return $id;
         $local_site_url= 'http://127.0.0.1:8000/short/';
         $short_url = $local_site_url.$id;
         $long = Shortener::where('short_url',$short_url)->first();
-        // return $long;
-        // return $long->id;
         return redirect($long->long_url);
 
     }
