@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shorteners', function (Blueprint $table) {
             $table->id();
-            $table->string('long_url');
+            $table->text('long_url');
             $table->string('short_url')->nullable();
             $table->integer('clicks_made')->nullable();
             $table->timestamps();

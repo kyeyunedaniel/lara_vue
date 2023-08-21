@@ -29,7 +29,7 @@
     </div>
   </div>
   URL Shortener Component
-  <v-col cols="12" sm="8" class="mx-auto">
+  <v-col cols="12" sm="8" class="mx-auto text-overline text-capitalize mb-1">
     <v-text-field
       rounded="lg"
       variant="outlined"
@@ -53,6 +53,33 @@
       </template>
     </v-text-field>
   </v-col>
+
+  <v-card
+    class="mx-auto"
+    max-width="950"
+    variant="outlined"
+  >
+    <v-card-item>
+      <div>
+        <div class="text-overline mb-1">
+          SHORTENED LINK
+        </div>
+        <!-- <div class="text-h6 mb-1">
+          Headline
+        </div> -->
+        <v-text-field variant="solo">
+          {{ shorturl }}
+        </v-text-field>
+        <v-btn variant="tonal" size="small"  class="text-blue" color="blue" @click.prevent="clipCopy">
+        copy link
+      </v-btn>
+
+      </div>
+    </v-card-item>
+
+    <v-card-actions>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
@@ -63,7 +90,9 @@ export default {
   },
   data(){
     return{
-        longurl:""
+        longurl:"",
+        shorturl:"",
+        old_url:""
     }
   },
   methods:{
@@ -79,6 +108,9 @@ export default {
             })
             .then((response)=>{
               console.log(response.data)
+              this.shorturl=response.data;
+              this.old_url = this.longurl;
+              this.longurl="";
             })
             .catch((error)=>{
               console.log(error)
@@ -90,6 +122,9 @@ export default {
       // console.log('clicked the modal removal button')
       $(ErrorModal).modal("hide");
     },
+    clipCopy(){
+      console.log('attempting to copy data')
+    }
   }
 };
 </script>
