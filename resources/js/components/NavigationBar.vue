@@ -49,6 +49,9 @@
           
           <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
 
+          <router-link :to="{name:'url-shortener'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
+            <v-list-item prepend-icon="mdi-scissors-cutting" title="url shortener" value="url-shortener"></v-list-item>
+          </router-link>
 
           <router-link to="/posts" :exact="true" active-class="v-item-active" style="text-decoration: none; color: inherit;">
             <v-list-item prepend-icon="mdi-email" title="Inbox" value="inbox"></v-list-item>

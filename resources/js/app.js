@@ -40,6 +40,7 @@ import AccountComponent from './components/AccountComponent.vue';
 import NavigationBar from './components/NavigationBar.vue';
 import PoliceComponent from './components/PoliceComponent.vue';
 import WeatherComponent from './components/WeatherComponent.vue';
+import ShortenerComponent from './components/ShortenerComponent.vue';
 
 import { Bootstrap4Pagination } from 'laravel-vue-pagination';
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
@@ -62,6 +63,7 @@ const routes = [
   {path:'/account',component:AccountComponent, name:'account', meta:{needsAuth:false} },
   {path:'/police-app',component:PoliceComponent, name:'police', },
   {path:'/weather-app',component:WeatherComponent, name:'weather'},
+  {path:'/url-shortener',component:ShortenerComponent, name:'url-shortener'},
   {path: '/:catchAll(.*)', redirect: '/home'},
 
   // { path: '/login', name: 'login' }
