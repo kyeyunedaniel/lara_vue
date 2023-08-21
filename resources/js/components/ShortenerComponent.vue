@@ -1,5 +1,5 @@
 <template>
-    <div
+  <div
     class="modal fade"
     id="ErrorModal"
     tabindex="-1"
@@ -22,9 +22,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body alert alert-danger">
-          Please Insert A url
-        </div>
+        <div class="modal-body alert alert-danger">Please Insert A url</div>
       </div>
     </div>
   </div>
@@ -54,31 +52,36 @@
     </v-text-field>
   </v-col>
 
-  <v-card
-    class="mx-auto"
-    max-width="950"
-    variant="outlined"
-  >
-    <v-card-item>
+  <v-card class="mx-auto" max-width="950" variant="outlined">
+    <v-card-item v-if="shorturl !== ''">
       <div>
-        <div class="text-overline mb-1">
-          SHORTENED LINK
-        </div>
-        <!-- <div class="text-h6 mb-1">
-          Headline
-        </div> -->
-        <v-text-field variant="solo">
+        <div class="text-overline mb-1">SHORTENED LINK</div>
+        <div class="mb-1">Please use the button to copy the shortened link</div>
+
+        <v-text-field variant="solo" color="blue">
+          <template v-slot:prepend-inner>
+            <v-btn
+              variant="tonal"
+              size="small"
+              class="text-green"
+              color="blue"
+              @click.prevent="clipCopy"
+            >
+              copy link
+            </v-btn>
+          </template>
           {{ shorturl }}
         </v-text-field>
-        <v-btn variant="tonal" size="small"  class="text-blue" color="blue" @click.prevent="clipCopy">
-        copy link
-      </v-btn>
-
+        <div class="mt-8 text-red">
+          The old link
+          <v-text-field variant="plain">
+            {{ old_url }}
+          </v-text-field>
+        </div>
       </div>
     </v-card-item>
 
-    <v-card-actions>
-    </v-card-actions>
+    <v-card-actions> </v-card-actions>
   </v-card>
 </template>
 
@@ -86,45 +89,48 @@
 export default {
   mounted() {
     console.log("Shortener Component mounted.");
-    console.log(this.longurl+ '  is the long url')
+    console.log(this.longurl + "  is the long url");
   },
-  data(){
-    return{
-        longurl:"",
-        shorturl:"",
-        old_url:""
-    }
+  data() {
+    return {
+      longurl: "",
+      shorturl: "",
+      old_url: "",
+    };
   },
-  methods:{
-    shortenUrl(){
-        if(this.longurl === ""){
-            // alert('insert a url before submitting') 
-            $(ErrorModal).modal("show");
-        }
-        else{
-            // console.log(this.longurl); 
-            axios.post('shorten_url',{
-              long_url:this.longurl
-            })
-            .then((response)=>{
-              console.log(response.data)
-              this.shorturl=response.data;
-              this.old_url = this.longurl;
-              this.longurl="";
-            })
-            .catch((error)=>{
-              console.log(error)
-            })
-        }
-        
+  methods: {
+    shortenUrl() {
+      const urlPattern = /^(ftp|http|https|www):\/\/[^ "]+$/;
+      if (this.longurl === "") {
+        // if(!urlPattern.test(this.longurl)){
+
+        // alert('insert a url before submitting')
+        $(ErrorModal).modal("show");
+      } else {
+        // console.log(this.longurl);
+        axios
+          .post("shorten_url", {
+            long_url: this.longurl,
+          })
+          .then((response) => {
+            console.log(response.data);
+            this.shorturl = response.data;
+            this.old_url = this.longurl;
+            this.longurl = "";
+            console.log(this.old_url);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     closeAllModels() {
       // console.log('clicked the modal removal button')
       $(ErrorModal).modal("hide");
     },
-    clipCopy(){
-      console.log('attempting to copy data')
-    }
-  }
+    clipCopy() {
+      console.log("attempting to copy data");
+    },
+  },
 };
 </script>
