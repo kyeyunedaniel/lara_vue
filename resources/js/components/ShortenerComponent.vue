@@ -78,7 +78,7 @@ export default {
               long_url:this.longurl
             })
             .then((response)=>{
-              console.log(response)
+              console.log(response.data)
             })
             .catch((error)=>{
               console.log(error)
