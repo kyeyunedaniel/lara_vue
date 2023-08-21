@@ -33,6 +33,8 @@ Route::middleware('throttle:200,1')->group(function () {
     Route::post('police_user_new', 'App\Http\Controllers\PoliceController@create_data')->name('create_police.home');
     Route::post('shorten_url', 'App\Http\Controllers\ShortenerController@AddLongUrl')->name('shorten_url.long');
     Route::get('/short/{id}', 'App\Http\Controllers\ShortenerController@RetrieveUrl' );
+
+    Route::post('/metric','App\Http\Controllers\ShortenerController@metrics')->name('metrics.click_count');
     Route::get('{any}', 'App\Http\Controllers\HomeController@index')->where('any', '.*');
 
     // Route::get('current_login','App\Http\Controllers\UserController@current_user');

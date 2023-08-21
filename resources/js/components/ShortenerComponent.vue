@@ -57,8 +57,8 @@
     </v-form>
   </v-col>
 
-  <v-card class="mx-auto" max-width="950" variant="outlined">
-    <v-card-item v-if="shorturl !== ''">
+  <v-card class="mx-auto" max-width="950" variant="outlined" v-if="shorturl !== ''">
+    <v-card-item >
       <div>
         <div class="text-overline">SHORTENED LINK</div>
         <div class="mb-1">Please use the button to copy the shortened link</div>
@@ -87,6 +87,40 @@
 
     <v-card-actions> </v-card-actions>
   </v-card>
+
+  <v-card>
+    <v-col cols="12" sm="12" class="mr-auto text-overline text-capitalize mb-1">
+    <v-form>
+      <v-text-field
+        rounded="lg"
+        variant="outlined"
+        color="info"
+        label="Paste a Link to View its Click Metrics."
+        cols="12"
+        sm="6"
+        v-model="metricsurl"
+      >
+        <template v-slot:prepend-inner>
+          <v-icon color="info">mdi-link-variant</v-icon>
+        </template>
+        <template v-slot:append-inner>
+          <v-btn
+            class="pl-18"
+            type="submit"
+            size="small"
+            color="info"
+            variant="tonal"
+            rounded="sm"
+            @click.prevent="viewMetrics"
+            >View Metrics</v-btn
+          >
+        </template>
+      </v-text-field>
+     The Number of clicks are {{ clicksnumber }} 
+    </v-form>
+  </v-col>
+  </v-card>
+
 </template>
 
 <script>
@@ -101,7 +135,9 @@ export default {
       shorturl: "",
       old_url: "",
       check_url: "",
-      button_click:""
+      button_click:"",
+      metricsurl:"",
+      clicksnumber:"",
     };
   },
   methods: {
@@ -155,6 +191,18 @@ export default {
         console.error("Failed to copy text:", error);
       }
     },
+    viewMetrics(){
+      axios.post('/metric',{
+        metricsurl:this.metricsurl
+      })
+      .then((response)=>{
+        console.log(response.data)
+        this.clicksnumber = response.data
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+    }
   }
 };
 </script>

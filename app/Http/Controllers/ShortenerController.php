@@ -52,7 +52,12 @@ class ShortenerController extends Controller
     }
 
     public function metrics(Request $request){
-        $input_url = request()->url_name();
+
+        // $local_site_url= 'http://127.0.0.1:8000/short/';
+
+        $input_url_short = request()->metricsurl;
+
+        $input_url = trim($input_url_short);
         try {
             $record = Shortener::where('short_url', $input_url)->firstOrFail();
             $number_of_clicks = $record->clicks_made;
