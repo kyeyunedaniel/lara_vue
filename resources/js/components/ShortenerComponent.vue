@@ -47,7 +47,7 @@
           color="info"
           variant="tonal"
           rounded="sm"
-          @click="shortenUrl"
+          @click.prevent="shortenUrl"
           >Shorten Url</v-btn
         >
       </template>
@@ -73,7 +73,16 @@ export default {
             $(ErrorModal).modal("show");
         }
         else{
-            console.log(this.longurl)
+            // console.log(this.longurl); 
+            axios.post('shorten_url',{
+              long_url:this.longurl
+            })
+            .then((response)=>{
+              console.log(response)
+            })
+            .catch((error)=>{
+              console.log(error)
+            })
         }
         
     },
