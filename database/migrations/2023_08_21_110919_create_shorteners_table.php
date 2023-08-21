@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('long_url');
             $table->string('short_url')->nullable();
-            $table->integer('clicks_made')->nullable();
+            $table->integer('clicks_made')->default(0);
             $table->timestamps();
         });
     }

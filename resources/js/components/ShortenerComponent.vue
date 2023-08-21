@@ -27,29 +27,34 @@
     </div>
   </div>
   URL Shortener Component
-  <v-col cols="12" sm="8" class="mx-auto text-overline text-capitalize mb-1">
-    <v-text-field
-      rounded="lg"
-      variant="outlined"
-      color="info"
-      label="Paste a Link to Shorten it."
-      v-model="longurl"
-    >
-      <template v-slot:prepend-inner>
-        <v-icon color="info">mdi-link-variant</v-icon>
-      </template>
-      <template v-slot:append-inner>
-        <v-btn
-          class="pl-18"
-          size="small"
-          color="info"
-          variant="tonal"
-          rounded="sm"
-          @click.prevent="shortenUrl"
-          >Shorten Url</v-btn
-        >
-      </template>
-    </v-text-field>
+  <v-col cols="12" sm="6" class="mx-auto text-overline text-capitalize mb-1">
+    <v-form>
+      <v-text-field
+        rounded="lg"
+        variant="outlined"
+        color="info"
+        label="Paste a Link to Shorten it."
+        cols="12"
+        sm="6"
+        v-model="longurl"
+      >
+        <template v-slot:prepend-inner>
+          <v-icon color="info">mdi-link-variant</v-icon>
+        </template>
+        <template v-slot:append-inner>
+          <v-btn
+            class="pl-18"
+            type="submit"
+            size="small"
+            color="info"
+            variant="tonal"
+            rounded="sm"
+            @click.prevent="shortenUrl"
+            >Shorten Url</v-btn
+          >
+        </template>
+      </v-text-field>
+    </v-form>
   </v-col>
 
   <v-card class="mx-auto" max-width="950" variant="outlined">
@@ -95,27 +100,31 @@ export default {
       longurl: "",
       shorturl: "",
       old_url: "",
-      check_url:""
+      check_url: "",
+      button_click:""
     };
   },
   methods: {
     shortenUrl() {
       // const urlPattern = /^(?:(ftp|http|https):\/\/)?(www\.)?([a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}$/;
-      const urlPattern = /^(?:(ftp|http|https):\/\/)?(www\.)?([a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}(\/[^\s]*)?$/;
+      const urlPattern =
+        /^(?:(ftp|http|https):\/\/)?(www\.)?([a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}(\/[^\s]*)?$/;
       this.check_url = urlPattern.test(this.longurl);
-      console.log(this.check_url)
+      console.log(this.check_url);
       // if(this.check_url = )
-      if (this.longurl === "" || this.check_url==false) {
+      if (this.longurl === "" || this.check_url == false) {
         // if(!urlPattern.test(this.longurl)){
 
         // alert('insert a url before submitting')
         $(ErrorModal).modal("show");
-      } 
-      else {
-        console.log(this.longurl +'we are testing the url before the if that adds the https')
+      } else {
+        console.log(
+          this.longurl +
+            "we are testing the url before the if that adds the https"
+        );
         if (!/^https?:\/\//i.test(this.longurl)) {
-        this.longurl='https://' + this.longurl;
-         }
+          this.longurl = "https://" + this.longurl;
+        }
         // console.log(this.longurl);
         axios
           .post("shorten_url", {
@@ -140,12 +149,12 @@ export default {
     clipCopy() {
       console.log("attempting to copy data");
       try {
-      navigator.clipboard.writeText(this.shorturl);
-      console.log('Text copied to clipboard');
-    } catch (error) {
-      console.error('Failed to copy text:', error);
-    }
+        navigator.clipboard.writeText(this.shorturl);
+        console.log("Text copied to clipboard");
+      } catch (error) {
+        console.error("Failed to copy text:", error);
+      }
     },
-  },
+  }
 };
 </script>
