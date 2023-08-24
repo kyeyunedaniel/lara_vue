@@ -25,6 +25,6 @@
         "vuedraggable": "^2.24.3",
         "vuetify": "^3.3.9",
         "vuetify-loader": "^1.9.2",
-        "vuex": "^4.0.2"
+        "vuex": "^4.1.0"
     }
 }
