@@ -17,7 +17,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 // import DataTable from 'datatables.net-vue3';
-// import store from './store/store'
+import store from './store/store'
 
 const vuetify = createVuetify({
   components,
@@ -98,5 +98,5 @@ router.beforeEach((to, from, next)=>{
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-
+app.use(store)
 app.use(vuetify).use(router).mount('#app');

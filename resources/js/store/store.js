@@ -1,16 +1,19 @@
-// import vue from '@vitejs/plugin-vue';
-// import Vuex from 'vuex';
+import { createStore } from 'vuex'; // Import createStore from Vuex
 
-// Vue.use(Vuex);
+const store = createStore({
+  state: {
+    // Your state properties here
+    products:"Daniel has logged in "  
+},
+  mutations: {
+    // Your mutations here
+  },
+  actions: {
+    // Your actions here
+  },
+  getters: {
+    // Your getters here
+  }
+});
 
-// const store = new Vuex.Store({
-//     state:{
-//         products:[
-//             {name:daniel, price :20000},
-//             {name:ethan, price :50000}
-//         ]
-        
-//     }
-// })
-
-// export default store
+export default store;
