@@ -58,8 +58,8 @@ app.component('weather-component',WeatherComponent);
 // app.component('pagination',);
 
 const routes = [ 
-  { path: '/home', component:CreateComponent, name:'home', meta:{needsAuth:false}},
-  { path: '/posts', component:ExampleComponent, meta:{needsAuth:false} },
+  {path: '/home', component:CreateComponent, name:'home', meta:{needsAuth:false}},
+  {path: '/posts', component:ExampleComponent, meta:{needsAuth:false} },
   {path:'/account',component:AccountComponent, name:'account', meta:{needsAuth:false} },
   {path:'/police-app',component:PoliceComponent, name:'police', },
   {path:'/weather-app',component:WeatherComponent, name:'weather'},

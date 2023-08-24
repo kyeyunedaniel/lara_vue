@@ -47,7 +47,7 @@
             <v-list-item prepend-icon="mdi-view-dashboard" title="Dashboard" value="Dahboard"></v-list-item>
           </router-link>
           
-          <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
+          <v-list-item prepend-icon="mdi-account-box" title="Account" value=""></v-list-item>
 
           <router-link :to="{name:'url-shortener'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
             <v-list-item prepend-icon="mdi-link-variant" title="url shortener" value="url-shortener"></v-list-item>
