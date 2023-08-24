@@ -9,7 +9,7 @@
         <v-menu transition="scale-transition" class="text-center">
             <template v-slot:activator="{ props }">
               <v-btn v-bind="props" variant="tonal" color="green">
-                <p class="font-weight-regular ma-2 text-capitalise">{{current_user + admin_user}}</p>
+                <p class="font-weight-regular ma-2 text-capitalise">{{loggedInData.current_user_name_new }}</p>
                 <v-icon>mdi-account-arrow-down</v-icon>
               </v-btn>
             </template>
