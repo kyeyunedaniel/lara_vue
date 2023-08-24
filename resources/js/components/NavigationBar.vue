@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app v-if="loggedInData.current_user_name_new ">
       <!-- App bar -->
       <v-app-bar app elevation="1" transparent theme="light">
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
@@ -18,7 +18,8 @@
               <router-link :to="{name:'account'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
               <v-list-item-title class="text-caption ma-2">DashBoard</v-list-item-title>
             </router-link>
-            {{ adminname }}
+            <!-- hello -->
+            {{ loggedInData.current_user_name_new }}
               <v-list-item-title class="text-caption ma-2">Payment Info</v-list-item-title>
               <v-list-item-title class="text-center">
               <v-btn size="small" variant="tonal" :style="{ width: '180px'}" class="ma-1" label="Prepend" append-icon="mdi-logout" style="text-decoration: none; color: none;" @click="logOut">LogOut</v-btn>
@@ -116,7 +117,9 @@
 </style>
   <script>
   // import axios from 'axios';
-  import { mapState } from 'vuex';
+  // import { mapState } from 'vuex';
+  import { mapState, mapActions } from 'vuex';
+
   // import AccountComponent from './AccountComponent.vue';
 
   export default {
@@ -196,6 +199,11 @@
           {
             return true
           }
+      },
+      ...mapActions(['fetchCurrentUser']),
+      fetchUserData(){
+        this.fetchCurrentUser();
+        console.log('fetch data executed');
       }
 
     },
@@ -204,14 +212,15 @@
       //   return this.$store.state.adminname
 
       // }
-      ...mapState(['adminname']),
+      ...mapState(['loggedInData']),
 
     },
 
     mounted(){
       console.log('navbar mounted'),
       // this.userRole(),
-      this.currentUser()
+      this.currentUser(),
+      this.fetchUserData()
       // this.user_role(this.current_id)
       // console.log('the current id during mounting is '+current_id)
 
