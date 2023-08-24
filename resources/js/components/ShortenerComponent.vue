@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  URL Shortener Component
+  URL Shortener Component{{ adminname }}
   <v-col cols="12" sm="6" class="mx-auto text-overline text-capitalize mb-1">
     <v-form>
       <v-text-field
@@ -128,6 +128,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   mounted() {
     console.log("Shortener Component mounted.");
@@ -211,5 +212,8 @@ export default {
         });
     },
   },
+  computed:{
+    ...mapState(['adminname']),
+  }
 };
 </script>

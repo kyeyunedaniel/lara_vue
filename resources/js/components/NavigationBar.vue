@@ -9,7 +9,7 @@
         <v-menu transition="scale-transition" class="text-center">
             <template v-slot:activator="{ props }">
               <v-btn v-bind="props" variant="tonal" color="green">
-                <p class="font-weight-regular ma-2 text-capitalise">{{current_user}}</p>
+                <p class="font-weight-regular ma-2 text-capitalise">{{current_user + admin_user}}</p>
                 <v-icon>mdi-account-arrow-down</v-icon>
               </v-btn>
             </template>
@@ -18,7 +18,7 @@
               <router-link :to="{name:'account'}" :exact="true"  exact-active-class="v-item-active" style="text-decoration: none; color: inherit;">
               <v-list-item-title class="text-caption ma-2">DashBoard</v-list-item-title>
             </router-link>
-            
+            {{ adminname }}
               <v-list-item-title class="text-caption ma-2">Payment Info</v-list-item-title>
               <v-list-item-title class="text-center">
               <v-btn size="small" variant="tonal" :style="{ width: '180px'}" class="ma-1" label="Prepend" append-icon="mdi-logout" style="text-decoration: none; color: none;" @click="logOut">LogOut</v-btn>
@@ -115,7 +115,8 @@
 
 </style>
   <script>
-  import axios from 'axios';
+  // import axios from 'axios';
+  import { mapState } from 'vuex';
   // import AccountComponent from './AccountComponent.vue';
 
   export default {
@@ -126,6 +127,7 @@
       return {
         current_id:null,
         current_user:null,
+        admin_user:"",
         user_roles_db:{},
         drawerOpen: true, // For controlling the navigation drawer's open/close state
         CartItems:0
@@ -195,6 +197,14 @@
             return true
           }
       }
+
+    },
+    computed:{
+      // super_user(){
+      //   return this.$store.state.adminname
+
+      // }
+      ...mapState(['adminname']),
 
     },
 

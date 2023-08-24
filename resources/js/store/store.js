@@ -3,7 +3,8 @@ import { createStore } from 'vuex'; // Import createStore from Vuex
 const store = createStore({
   state: {
     // Your state properties here
-    products:"Daniel has logged in "  
+    adminname:"Mark", 
+    adminMessage:"Hello From Admin"  
 },
   mutations: {
     // Your mutations here
